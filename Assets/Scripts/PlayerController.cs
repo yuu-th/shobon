@@ -1,0 +1,123 @@
+using System.Collections;
+using System.Collections.Generic;
+using System;
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour
+{
+    Rigidbody2D rigid2D;
+    [SerializeField] private Animator animator;
+
+
+    private float jumpForce = 800.0f;
+    //float moveForce = 20.0f;
+    //float maxSpeed = 2.0f;
+    private float idoumaxspeed =7.3f;
+    private bool jump_Jud = false; //ジャンプ回数の制限のため
+
+    private float stepOnRate;
+
+    private int jumpAfterFrame = 0;
+
+
+    private float beforeChangeRunStateX;
+    private int runState = 1;
+
+
+
+    void Start()
+    {
+        this.rigid2D = GetComponent<Rigidbody2D>();
+        beforeChangeRunStateX = rigid2D.position.x;
+    }
+
+
+    void Update()
+    {
+        //ジャンプ
+        if (Input.GetKeyDown(KeyCode.Space) && !jump_Jud)
+        {
+            if (rigid2D.velocity.x > 1.0f)
+            {
+                this.rigid2D.AddForce(transform.up * jumpForce+new Vector3(0,80.0f));
+            }
+            else {
+                this.rigid2D.AddForce(transform.up * jumpForce);
+            }
+            jump_Jud = true;
+            jumpAfterFrame = 0;
+        }
+        else if (Input.GetKeyUp(KeyCode.Space) && jump_Jud && jumpAfterFrame<= 6)
+        {
+            float tmp = -140.0f;
+            if (rigid2D.velocity.x > 1.0f)
+            {
+                tmp -= 70.0f;
+            }
+            var vec = new Vector2(0f, tmp);
+            rigid2D.AddForce(vec);
+        }
+
+
+        animator.SetInteger("runState", runState);
+        animator.SetBool("isJumping", jump_Jud);
+
+    }
+    void FixedUpdate()
+    {
+        jumpAfterFrame++;
+        //rigid2D.velocity = new Vector2(rigid2D.velocity.x + 0.1f*Input.GetAxis("Horizontal"), rigid2D.velocity.y);
+
+        float horizontal = Input.GetAxis("Horizontal");
+
+        Vector3 scale = gameObject.transform.localScale;
+        if (horizontal < 0 && scale.x > 0 || horizontal > 0 && scale.x < 0)
+        {
+            scale.x *= -1;
+        }
+        gameObject.transform.localScale = scale;
+
+
+
+
+        //移動
+        float x = Input.GetAxis("Horizontal");
+        x = x * idoumaxspeed;
+        var vec = new Vector2(x, rigid2D.velocity.y);
+        rigid2D.AddForce(3 * (vec - rigid2D.velocity));
+
+
+        if (Math.Abs(beforeChangeRunStateX- rigid2D.position.x )>0.75f)
+        {
+            beforeChangeRunStateX = rigid2D.position.x;
+            runState++;
+            if (runState == 3)
+            {
+                runState = 1;
+            }
+        }
+
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block")
+        {
+            //ジャンプ制限の解除
+            this.jump_Jud = false;
+            rigid2D.velocity = new Vector2(rigid2D.velocity.x, 0);
+        }
+
+    }
+    void OnTriggerExit2D(Collider2D collider)
+    {
+
+        if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block")
+        {
+            this.jump_Jud = true;
+        }
+    }
+
+
+
+}
