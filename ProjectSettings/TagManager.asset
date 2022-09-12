@@ -7,6 +7,9 @@ TagManager:
   - Stage
   - Background
   - Block
+  - Goal
+  - GoalToride
+  - KillAbleEnemy
   layers:
   - Default
   - TransparentFX
@@ -44,7 +47,7 @@ TagManager:
   - name: Background
     uniqueID: 546850749
     locked: 0
-  - name: decration
+  - name: Decoration
     uniqueID: 2921074371
     locked: 0
   - name: Tilemap

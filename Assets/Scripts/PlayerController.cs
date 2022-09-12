@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     //float moveForce = 20.0f;
     //float maxSpeed = 2.0f;
     private float idoumaxspeed =7.3f;
-    private bool jump_Jud = false; //ÉWÉÉÉìÉvâÒêîÇÃêßå¿ÇÃÇΩÇﬂ
+    private bool jump_Jud = false; //ÔøΩWÔøΩÔøΩÔøΩÔøΩÔøΩvÔøΩÒêîÇÃêÔøΩÔøΩÔøΩÔøΩÃÇÔøΩÔøΩÔøΩ
 
     private float stepOnRate;
 
@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     private float beforeChangeRunStateX;
     private int runState = 1;
 
+    private bool isGoalFalling = false;
+    private bool isGoalWalking = false;
+    private float goalSpeed = 4.0f;
 
 
     void Start()
@@ -34,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        //ÉWÉÉÉìÉv
+        //ÔøΩWÔøΩÔøΩÔøΩÔøΩÔøΩv
         if (Input.GetKeyDown(KeyCode.Space) && !jump_Jud)
         {
             if (rigid2D.velocity.x > 1.0f)
@@ -76,11 +79,21 @@ public class PlayerController : MonoBehaviour
             scale.x *= -1;
         }
         gameObject.transform.localScale = scale;
+        
+
+       if (isGoalFalling)
+        {
+            rigid2D.velocity = new Vector2(0.0f, -goalSpeed);
+            return;
+
+        }else if (isGoalWalking)
+        {
+            rigid2D.velocity = new Vector2(goalSpeed, rigid2D.velocity.y);
+        }
 
 
 
-
-        //à⁄ìÆ
+        //ÔøΩ⁄ìÔøΩ
         float x = Input.GetAxis("Horizontal");
         x = x * idoumaxspeed;
         var vec = new Vector2(x, rigid2D.velocity.y);
@@ -103,10 +116,36 @@ public class PlayerController : MonoBehaviour
     {
         if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block")
         {
-            //ÉWÉÉÉìÉvêßå¿ÇÃâèú
+            if (isGoalFalling)
+            {
+                isGoalFalling = false;
+                isGoalWalking = true;
+            }
+
+            //ÔøΩWÔøΩÔøΩÔøΩÔøΩÔøΩvÔøΩÔøΩÔøΩÔøΩÔøΩÃâÔøΩÔøΩÔøΩ
             this.jump_Jud = false;
             rigid2D.velocity = new Vector2(rigid2D.velocity.x, 0);
         }
+        if (collider.gameObject.tag == "KillAbleEnemy")
+        {
+            if (jumpAfterFrame < 3)
+            {
+                return;
+            }
+            rigid2D.velocity = new Vector2(rigid2D.velocity.x, 0);
+            if (rigid2D.velocity.x > 1.0f)
+            {
+                this.rigid2D.AddForce(transform.up * jumpForce + new Vector3(0, 80.0f));
+            }
+            else
+            {
+                this.rigid2D.AddForce(transform.up * jumpForce);
+            }
+            jump_Jud = true;
+            jumpAfterFrame = 0;
+
+        }
+
 
     }
     void OnTriggerExit2D(Collider2D collider)
@@ -115,6 +154,18 @@ public class PlayerController : MonoBehaviour
         if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block")
         {
             this.jump_Jud = true;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Goal")
+        {
+            isGoalFalling = true;
+        }
+        if (isGoalWalking && collision.gameObject.tag == "GoalTride")
+        {
+            this.gameObject.SetActive(false);
         }
     }
 
