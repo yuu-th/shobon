@@ -23,7 +23,7 @@ public class HatenaController : MonoBehaviour
             pos.x = 0;
             pos.y = 0;
             */
-            childObj.transform.position = new Vector2(transform.position.x, transform.position.y);
+            childObj.transform.position = new Vector2(transform.position.x, transform.position.y+0.5f);
             childObj.SetActive(false);
         }
         
