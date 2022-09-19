@@ -188,6 +188,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hatena (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 862062749854639478, guid: d3b1ff00f701bbc4681e72ae955d6527, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3b1ff00f701bbc4681e72ae955d6527, type: 3}
 --- !u!1001 &165392741
@@ -347,6 +351,10 @@ PrefabInstance:
     - target: {fileID: 862062749854639371, guid: d3b1ff00f701bbc4681e72ae955d6527, type: 3}
       propertyPath: m_Name
       value: Hatena
+      objectReference: {fileID: 0}
+    - target: {fileID: 862062749854639478, guid: d3b1ff00f701bbc4681e72ae955d6527, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3b1ff00f701bbc4681e72ae955d6527, type: 3}
@@ -534,6 +542,10 @@ PrefabInstance:
     - target: {fileID: 862062749854639371, guid: d3b1ff00f701bbc4681e72ae955d6527, type: 3}
       propertyPath: m_Name
       value: Hatena (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 862062749854639478, guid: d3b1ff00f701bbc4681e72ae955d6527, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3b1ff00f701bbc4681e72ae955d6527, type: 3}
@@ -2637,6 +2649,10 @@ PrefabInstance:
     - target: {fileID: 862062749854639371, guid: d3b1ff00f701bbc4681e72ae955d6527, type: 3}
       propertyPath: m_Name
       value: Hatena (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 862062749854639478, guid: d3b1ff00f701bbc4681e72ae955d6527, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3b1ff00f701bbc4681e72ae955d6527, type: 3}
