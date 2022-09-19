@@ -6999,7 +6999,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 428108015866177955, guid: b2e077c8702cefa42bbf055e9c1d3146, type: 3}
       propertyPath: m_Name
-      value: zako1
+      value: Teki0
       objectReference: {fileID: 0}
     - target: {fileID: 428108015866177957, guid: b2e077c8702cefa42bbf055e9c1d3146, type: 3}
       propertyPath: m_RootOrder
