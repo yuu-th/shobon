@@ -128,22 +128,29 @@ public class PlayerController : MonoBehaviour
         }
         if (collider.gameObject.tag == "KillAbleEnemy")
         {
-            if (jumpAfterFrame < 3)
+            if (collider.gameObject.name == "Head")
             {
-                return;
-            }
-            rigid2D.velocity = new Vector2(rigid2D.velocity.x, 0);
-            if (rigid2D.velocity.x > 1.0f)
+                if (jumpAfterFrame < 3)
+                {
+                    return;
+                }
+                rigid2D.velocity = new Vector2(rigid2D.velocity.x, 0);
+                if (rigid2D.velocity.x > 1.0f)
+                {
+                    this.rigid2D.AddForce(transform.up * jumpForce + new Vector3(0, 80.0f));
+                }
+                else
+                {
+                    this.rigid2D.AddForce(transform.up * jumpForce);
+                }
+                jump_Jud = true;
+                jumpAfterFrame = 0;
+                collider.gameObject.transform.parent.gameObject.SetActive(false);
+            }else if (collider.gameObject.name == "Body")
             {
-                this.rigid2D.AddForce(transform.up * jumpForce + new Vector3(0, 80.0f));
+                die();
+                Debug.Log("uho");
             }
-            else
-            {
-                this.rigid2D.AddForce(transform.up * jumpForce);
-            }
-            jump_Jud = true;
-            jumpAfterFrame = 0;
-
         }
 
 
@@ -167,6 +174,17 @@ public class PlayerController : MonoBehaviour
         {
             this.gameObject.SetActive(false);
         }
+        if (collision.gameObject.tag == "KillAbleEnemy")
+        {
+            jumpAfterFrame = 0;
+            die();
+            Debug.Log("uho");
+        }
+    }
+
+    void die()
+    {
+        gameObject.SetActive(false);
     }
 
 
