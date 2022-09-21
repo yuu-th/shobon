@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private float jumpForce = 800.0f;
     //float moveForce = 20.0f;
     //float maxSpeed = 2.0f;
-    private float idoumaxspeed =7.3f;
+    private float idoumaxspeed = 7.3f;
     private bool jump_Jud = false; //�W�����v�񐔂̐����̂���
 
     private float stepOnRate;
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
         {
             if (rigid2D.velocity.x > 1.0f)
             {
-                this.rigid2D.AddForce(transform.up * jumpForce+new Vector3(0,80.0f));
+                this.rigid2D.AddForce(transform.up * jumpForce + new Vector3(0, 80.0f));
             }
             else {
                 this.rigid2D.AddForce(transform.up * jumpForce);
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
             jump_Jud = true;
             jumpAfterFrame = 0;
         }
-        else if (Input.GetKeyUp(KeyCode.Space) && jump_Jud && jumpAfterFrame<= 6)
+        else if (Input.GetKeyUp(KeyCode.Space) && jump_Jud && jumpAfterFrame <= 6)
         {
             float tmp = -140.0f;
             if (rigid2D.velocity.x > 1.0f)
@@ -79,14 +79,14 @@ public class PlayerController : MonoBehaviour
             scale.x *= -1;
         }
         gameObject.transform.localScale = scale;
-        
 
-       if (isGoalFalling)
+
+        if (isGoalFalling)
         {
             rigid2D.velocity = new Vector2(0.0f, -goalSpeed);
             return;
 
-        }else if (isGoalWalking)
+        } else if (isGoalWalking)
         {
             rigid2D.velocity = new Vector2(goalSpeed, rigid2D.velocity.y);
         }
@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
         rigid2D.AddForce(3 * (vec - rigid2D.velocity));
 
 
-        if (Math.Abs(beforeChangeRunStateX- rigid2D.position.x )>0.75f)
+        if (Math.Abs(beforeChangeRunStateX - rigid2D.position.x) > 0.75f)
         {
             beforeChangeRunStateX = rigid2D.position.x;
             runState++;
@@ -116,6 +116,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block")
         {
+
             if (isGoalFalling)
             {
                 isGoalFalling = false;
@@ -146,11 +147,20 @@ public class PlayerController : MonoBehaviour
                 jump_Jud = true;
                 jumpAfterFrame = 0;
                 collider.gameObject.transform.parent.gameObject.SetActive(false);
-            }else if (collider.gameObject.name == "Body")
+            } else if (collider.gameObject.name == "Body")
             {
                 die();
                 Debug.Log("uho");
             }
+        }
+
+        if (collider.gameObject.tag == "Goal" && !isGoalFalling && !isGoalWalking)
+        {
+            isGoalFalling = true;
+        }
+        if (isGoalWalking && collider.gameObject.tag == "GoalToride")
+        {
+            gameObject.SetActive(false);
         }
 
 
@@ -160,20 +170,34 @@ public class PlayerController : MonoBehaviour
 
         if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block")
         {
-            this.jump_Jud = true;
+
+            Invoke("make_jump_Jud_on", 0.1f);
+            //this.jump_Jud = true;
         }
+    }
+    IEnumerator WaitFor1Frame()
+    {
+        yield return new WaitForSeconds(0.1f);
+    }
+
+    void OnTriggerStay2D(Collider2D collider)
+    {
+        if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block")
+        {
+            StartCoroutine("WaitFor1Frame");
+            CancelInvoke("make_jump_Jud_on");
+        }
+    }
+
+
+    void make_jump_Jud_on()
+    {
+        this.jump_Jud = true;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Goal")
-        {
-            isGoalFalling = true;
-        }
-        if (isGoalWalking && collision.gameObject.tag == "GoalTride")
-        {
-            this.gameObject.SetActive(false);
-        }
+        
         if (collision.gameObject.tag == "KillAbleEnemy")
         {
             jumpAfterFrame = 0;
