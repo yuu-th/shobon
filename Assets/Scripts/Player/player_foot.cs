@@ -17,7 +17,6 @@ public class player_foot : MonoBehaviour
     void Update()
     {
         horizontal = Input.GetAxis("Horizontal");
-        Debug.Log(horizontal);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -27,7 +26,7 @@ public class player_foot : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (rigid2D.velocity.x >= 2 && rigid2D.velocity.x <= -2 && collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block" && jumping == true)
+        if (rigid2D.velocity.x >= 2 && rigid2D.velocity.x <= -2 && (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block") && jumping == true)
         {
             rigid2D.velocity = new Vector2(0, rigid2D.velocity.y);
             jumping = false;
@@ -36,12 +35,12 @@ public class player_foot : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collider)
     {
-        if (Mathf.Abs(rigid2D.velocity.x) > 3.0f && collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block")
+        if (Mathf.Abs(rigid2D.velocity.x) > 3.0f && (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block"))
         {
             running = true;
         }
 
-        if (horizontal < 0.5 && horizontal > -0.5 && collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block" && running == true)
+        if (horizontal < 0.5 && horizontal > -0.5 && (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block") && running == true)
         {
             if (rigid2D.velocity.x < -1.7 && running == true)
             {
@@ -60,7 +59,7 @@ public class player_foot : MonoBehaviour
             stopping = true;
         }
 
-        if (horizontal < 0.1 && horizontal > -0.1 && collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block" && stopping == true)
+        if (horizontal < 0.1 && horizontal > -0.1 && (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block") && stopping == true)
         {
             if (rigid2D.velocity.x < -0.5 && stopping == true)
             {
