@@ -16,6 +16,8 @@ public class toumei_triger_controller : MonoBehaviour
         Debug.Log(invisibility_block.name);
         boxcollider = GetComponent<BoxCollider2D>();
         player_rigid = player.GetComponent<Rigidbody2D>();
+        Debug.Log(player_rigid.name);
+        Debug.Log(player.name);
     }
 
     // Update is called once per frame
