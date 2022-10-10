@@ -32,7 +32,7 @@ public class toumei_triger_controller : MonoBehaviour
             GameObject.Destroy(gameObject);
 
         }
-        else if (collider.gameObject.name == "Foot" || collider.gameObject.name == "Player")
+        /*else if (collider.gameObject.name == "Foot" || collider.gameObject.name == "Player")
         {
             falling = true;
         }
@@ -40,9 +40,10 @@ public class toumei_triger_controller : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.gameObject.name == "Head" && player.transform.position.y < this.transform.position.y - 0.5)
+        if (collider.gameObject.name == "Player" && player.transform.position.y < this.transform.position.y - 0.1)
         {
             falling = false;
         }
+    }*/
     }
 }

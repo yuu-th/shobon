@@ -33,7 +33,7 @@ public class Teki0Controller : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D colider)
     {
-        if (colider.gameObject.name == "Foot")
+        if (colider.gameObject.transform.parent.name != "Player")
         {
             walkSpeed *= -1;
         }

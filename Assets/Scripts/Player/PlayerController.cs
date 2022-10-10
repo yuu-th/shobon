@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
                 jump_Jud = true;
                 jumpAfterFrame = 0;
 
-                if (collider.gameObject.name == "Head")
+                if (collider.gameObject.transform.parent.name == "teki1")
                 {
                     return;
                 }
