@@ -10,7 +10,7 @@ public class teki1_controller : MonoBehaviour
     private float walkSpeed = -5.0f,dif;
     private bool kicked = false;
     public bool inside = false;
-    public BoxCollider2D head_2d,body_2d;
+    public BoxCollider2D head_2d,body_2d,side_2d;
 
     void Start()
     {
@@ -66,6 +66,7 @@ public class teki1_controller : MonoBehaviour
                 renderer.sprite = inside_img;
                 head_2d.offset = new Vector2(0, 0.1f);
                 body_2d.size = new Vector2(0.25f, 0.12f);
+                side_2d.offset = new Vector2(0, -0.15f);
             }
             else if (inside == true && kicked == false)
             {
