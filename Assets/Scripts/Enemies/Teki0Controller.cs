@@ -27,17 +27,17 @@ public class Teki0Controller : MonoBehaviour
         }
         gameObject.transform.localScale = scale;
 
-
         var vec = new Vector2(walkSpeed, rigid2D.velocity.y);
         rigid2D.AddForce(3 * (vec - rigid2D.velocity));
     }
 
     void OnTriggerEnter2D(Collider2D colider)
     {
-        if (colider.tag == "Player"){
-            return;
-
+        if (colider.gameObject.name == "Foot")
+        {
+            walkSpeed *= -1;
         }
-        walkSpeed *= -1;
     }
 }
+
+

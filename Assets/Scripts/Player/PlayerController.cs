@@ -146,7 +146,15 @@ public class PlayerController : MonoBehaviour
                 }
                 jump_Jud = true;
                 jumpAfterFrame = 0;
-                collider.gameObject.transform.parent.gameObject.SetActive(false);
+
+                if (collider.gameObject.name == "Head")
+                {
+                    return;
+                }
+                else
+                {
+                    collider.gameObject.transform.parent.gameObject.SetActive(false);//敵殺す
+                }
             } else if (collider.gameObject.name == "Body")
             {
                 die();
@@ -210,7 +218,4 @@ public class PlayerController : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-
-
-
 }
