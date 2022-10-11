@@ -2,19 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Teki0Controller : MonoBehaviour
+public class teki2_controller : MonoBehaviour
 {
     Rigidbody2D rigid2D;
-    private float walkSpeed =-5.0f;
+    private float walkSpeed = -5.0f;
 
     void Start()
     {
         this.rigid2D = GetComponent<Rigidbody2D>();
-        
-
     }
-
-
     void FixedUpdate()
     {
 
@@ -39,5 +35,3 @@ public class Teki0Controller : MonoBehaviour
         }
     }
 }
-
-
