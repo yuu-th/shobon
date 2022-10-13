@@ -9,15 +9,14 @@ public class CameraController: MonoBehaviour
     GameObject playerObj;
     PlayerController player;
     Transform playerTransform;
-    protected float nowX;
+    protected float nowX_p;
 
     void Start()
     {
         playerObj = GameObject.FindGameObjectWithTag("Player");
         player = playerObj.GetComponent<PlayerController>();
         playerTransform = playerObj.transform;
-        //nowX = playerTransform.position.x;
-        nowX = 0;
+        nowX_p = 0;
     }
 
     void LateUpdate()
@@ -27,13 +26,17 @@ public class CameraController: MonoBehaviour
 
     void MoveCamera()
     {
-        if(playerTransform.position.x > nowX)
+        if(playerTransform.position.x > nowX_p)
         {
-            nowX = playerTransform.position.x;
+            nowX_p = playerTransform.position.x;
+            transform.position = new Vector3(nowX_p, transform.position.y, transform.position.z);
+        }
+        else if(playerTransform.position.x < nowX_p)
+        {
+            nowX_p = playerTransform.position.x;
+            transform.position = new Vector3(nowX_p, transform.position.y, transform.position.z);
         }
 
-        //‰¡•ûŒü‚¾‚¯’Ç]
-        transform.position = new Vector3(nowX, transform.position.y, transform.position.z);
     }
 
 }

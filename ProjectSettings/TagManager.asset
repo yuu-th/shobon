@@ -10,6 +10,7 @@ TagManager:
   - Goal
   - GoalToride
   - KillAbleEnemy
+  - Trap
   layers:
   - Default
   - TransparentFX

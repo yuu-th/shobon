@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class warp_controller : MonoBehaviour
 {
-    GameObject warp_target,player;
+    GameObject warp_target;
     public GameObject warp_pair;
     void Start()
     {
@@ -18,10 +18,25 @@ public class warp_controller : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        warp_target = collider.gameObject.transform.parent.gameObject;
-        StartCoroutine(cancel_warp());
-        warp_target.transform.position = new Vector3(warp_pair.transform.position.x, warp_pair.transform.position.y,0);
+        try {
+            warp_target = collider.gameObject.transform.parent.gameObject;
+            Debug.Log(collider.gameObject.transform.parent.gameObject.name);
+            StartCoroutine(cancel_warp());
+            warp_target.transform.position = new Vector3(warp_pair.transform.position.x, warp_pair.transform.position.y, 0);
+        }
+        catch (System.NullReferenceException)
+        {
+
+        }
     }
+
+    /*private void OnCollisionEnter2D(Collision2D collision)
+    {
+        warp_target = collision.gameObject.transform.parent.gameObject;
+        Debug.Log(collision.gameObject.transform.parent.gameObject.name);
+        StartCoroutine(cancel_warp());
+        warp_target.transform.position = new Vector3(warp_pair.transform.position.x, warp_pair.transform.position.y, 0);
+    }*/
 
     IEnumerator cancel_warp()
     {
