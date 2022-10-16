@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block")
+        if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block" || collider.gameObject.tag == "pipe")
         {
 
             if (isGoalFalling)
@@ -176,7 +176,7 @@ public class PlayerController : MonoBehaviour
     void OnTriggerExit2D(Collider2D collider)
     {
 
-        if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block")
+        if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block" || collider.gameObject.tag == "pipe")
         {
 
             Invoke("make_jump_Jud_on", 0.1f);
@@ -190,7 +190,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collider)
     {
-        if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block")
+        if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block" || collider.gameObject.tag == "pipe")
         {
             StartCoroutine("WaitFor1Frame");
             CancelInvoke("make_jump_Jud_on");

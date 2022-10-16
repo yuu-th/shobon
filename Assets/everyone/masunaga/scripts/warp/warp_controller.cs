@@ -18,9 +18,16 @@ public class warp_controller : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        warp_target = collider.gameObject.transform.parent.gameObject;
-        StartCoroutine(cancel_warp());
-        warp_target.transform.position = new Vector3(warp_pair.transform.position.x, warp_pair.transform.position.y,0);
+        try
+        {
+            warp_target = collider.gameObject.transform.parent.gameObject;
+            StartCoroutine(cancel_warp());
+            warp_target.transform.position = new Vector3(warp_pair.transform.position.x, warp_pair.transform.position.y, 0);
+        }
+        catch (System.NullReferenceException)
+        {
+
+        }
     }
 
     IEnumerator cancel_warp()

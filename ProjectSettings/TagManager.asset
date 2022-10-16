@@ -10,6 +10,7 @@ TagManager:
   - Goal
   - GoalToride
   - KillAbleEnemy
+  - pipe
   layers:
   - Default
   - TransparentFX
@@ -31,6 +32,7 @@ TagManager:
   - 
   - 
   - 
+  - player
   - 
   - 
   - 
@@ -41,8 +43,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - pipe
   m_SortingLayers:
   - name: Background
     uniqueID: 546850749
