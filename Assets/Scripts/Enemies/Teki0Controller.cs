@@ -46,5 +46,3 @@ public class Teki0Controller : MonoBehaviour
         }
     }
 }
-
-

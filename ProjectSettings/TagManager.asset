@@ -10,7 +10,11 @@ TagManager:
   - Goal
   - GoalToride
   - KillAbleEnemy
+<<<<<<< HEAD
   - pipe
+=======
+  - Trap
+>>>>>>> parent of 325d8cf (Revert "いろいろ修正")
   layers:
   - Default
   - TransparentFX

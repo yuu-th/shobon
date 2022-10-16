@@ -16,7 +16,6 @@ public class CameraController: MonoBehaviour
         playerObj = GameObject.FindGameObjectWithTag("Player");
         player = playerObj.GetComponent<PlayerController>();
         playerTransform = playerObj.transform;
-        //nowX = playerTransform.position.x;
         nowX = 0;
     }
 
