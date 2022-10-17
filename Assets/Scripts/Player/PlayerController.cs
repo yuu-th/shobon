@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rigid2D;
     [SerializeField] private Animator animator;
+
+    public static string stage_name;
 
 
     private float jumpForce = 800.0f;
@@ -32,6 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         this.rigid2D = GetComponent<Rigidbody2D>();
         beforeChangeRunStateX = rigid2D.position.x;
+        stage_name = SceneManager.GetActiveScene().name;
     }
 
 
@@ -217,5 +221,11 @@ public class PlayerController : MonoBehaviour
     public void die()
     {
         gameObject.SetActive(false);
+        SceneManager.LoadScene("dead_scene");
     }
+
+    /*string get_stage()
+    {
+        return stage_name;
+    }*/
 }

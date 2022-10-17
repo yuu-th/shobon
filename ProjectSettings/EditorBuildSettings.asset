@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/1-1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/game_manager/dead_scene.unity
+    guid: c2d85d039eb2eb5489dac413af835e36
+  - enabled: 1
+    path: Assets/Scenes/seima_stage.unity
+    guid: dcc6c06aa40df3140889ba04d3576005
   m_configObjects: {}
