@@ -20,7 +20,7 @@ public class spring_controller : MonoBehaviour
     {
         if (player.transform.position.y >= 200)
         {
-            player_controller.die();
+            player_controller.StartCoroutine("die");
         }
     }
 
