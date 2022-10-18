@@ -323,7 +323,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 183626095}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &15057470
 SpriteRenderer:
@@ -768,11 +768,11 @@ Transform:
   - {fileID: 939062430}
   - {fileID: 918192559}
   - {fileID: 1958689574}
+  - {fileID: 789039345}
   - {fileID: 1110883635}
   - {fileID: 288280776}
   - {fileID: 980572763}
   - {fileID: 15057469}
-  - {fileID: 789039345}
   - {fileID: 405819861}
   - {fileID: 518435370}
   - {fileID: 13061456}
@@ -946,7 +946,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 183626095}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &288280777
 SpriteRenderer:
@@ -2150,6 +2150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc275d1c16602f448912c5a05612a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canBack: 0
 --- !u!4 &789039345 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 614659780881530666, guid: d80489bb16ead4b4289b68096c11d745, type: 3}
@@ -2689,7 +2690,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 183626095}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &980572764
 SpriteRenderer:
@@ -8133,7 +8134,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 183626095}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1124124826
 PrefabInstance:
@@ -9335,11 +9336,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7714104997583068428, guid: 7f199db8d33404644b4095c9b20350a3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.5
+      value: -8.54
       objectReference: {fileID: 0}
     - target: {fileID: 7714104997583068428, guid: 7f199db8d33404644b4095c9b20350a3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.3581204
+      value: -6.12
       objectReference: {fileID: 0}
     - target: {fileID: 7714104997583068428, guid: 7f199db8d33404644b4095c9b20350a3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9640,7 +9641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1262668318383158391, guid: 2b4ce80643b518e429c02230fc2cd070, type: 3}
       propertyPath: Downward
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -1262668318383158391, guid: 2b4ce80643b518e429c02230fc2cd070, type: 3}
       propertyPath: end_pos.x
