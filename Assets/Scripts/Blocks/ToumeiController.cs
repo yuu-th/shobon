@@ -4,24 +4,26 @@ using UnityEngine;
 
 public class ToumeiController : MonoBehaviour
 {
-
+    public BoxCollider2D hit_colider;
+    GameObject player,player_head;
     //private Renderer renderer;
 
-    // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         GetComponent<Renderer>().enabled = false;
+        hit_colider = GetComponent<BoxCollider2D>();
+        hit_colider.enabled = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
+
     }
-    void OnTriggerEnter2D(Collider2D collider)
+
+    public void hit()
     {
-        if (collider.gameObject.name == "Player")
-        {
-            GetComponent<Renderer>().enabled = true;
-        }
+        GetComponent<Renderer>().enabled = true;
+        hit_colider.enabled = true;
     }
 }
