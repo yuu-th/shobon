@@ -47,7 +47,7 @@ public class HatenaController : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (inItem &&collider.gameObject.name == "Head")
+        if (!isOpen &&inItem &&collider.gameObject.name == "Head")
         {
             isOpen = true;
             childObj.SetActive(true);
