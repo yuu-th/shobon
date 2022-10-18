@@ -26,7 +26,7 @@ public class cloud_controller : MonoBehaviour
         if(can_kill == true && collision.gameObject.tag == "Player")
         {
             renderer.sprite = killed_img;
-            player_controller.die();
+            player_controller.StartCoroutine("die");
         }
     }
 }

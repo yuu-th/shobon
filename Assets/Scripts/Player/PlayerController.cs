@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
     private int jumpAfterFrame = 0;
 
+    private bool dead = false;
+
 
     private float beforeChangeRunStateX;
     private int runState = 1;
@@ -42,19 +44,19 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //�W�����v
-        if (Input.GetKeyDown(KeyCode.Space) && !jump_Jud)
+        if (Input.GetKeyDown(KeyCode.Space) && !jump_Jud && dead == false)
         {
             if (rigid2D.velocity.x > 1.0f)
             {
                 this.rigid2D.AddForce(transform.up * jumpForce + new Vector3(0, 80.0f));
             }
             else {
-                this.rigid2D.AddForce(transform.up * jumpForce);
+                this.rigid2D.AddForce(transform.up * jumpForce );
             }
             jump_Jud = true;
             jumpAfterFrame = 0;
         }
-        else if (Input.GetKeyUp(KeyCode.Space) && jump_Jud && jumpAfterFrame <= 6)
+        else if (Input.GetKeyUp(KeyCode.Space) && jump_Jud && jumpAfterFrame <= 6 && dead == false)
         {
             float tmp = -140.0f;
             if (rigid2D.velocity.x > 1.0f)
@@ -78,7 +80,7 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
 
         Vector3 scale = gameObject.transform.localScale;
-        if (horizontal < 0 && scale.x > 0 || horizontal > 0 && scale.x < 0)
+        if (horizontal < 0 && scale.x > 0 || horizontal > 0 && scale.x < 0 && dead == false)
         {
             scale.x *= -1;
         }
@@ -101,7 +103,10 @@ public class PlayerController : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         x = x * idoumaxspeed;
         var vec = new Vector2(x, rigid2D.velocity.y);
-        rigid2D.AddForce(3 * (vec - rigid2D.velocity));
+        if (dead == false)
+        {
+            rigid2D.AddForce(3 * (vec - rigid2D.velocity));
+        }
 
 
         if (Math.Abs(beforeChangeRunStateX - rigid2D.position.x) > 0.75f)
@@ -161,7 +166,7 @@ public class PlayerController : MonoBehaviour
                 }
             } else if (collider.gameObject.name == "Body")
             {
-                die();
+                StartCoroutine(die());
                 Debug.Log("uho");
             }
         }
@@ -213,19 +218,36 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "KillAbleEnemy")
         {
             jumpAfterFrame = 0;
-            die();
+            StartCoroutine(die());
             Debug.Log("uho");
         }
     }
 
-    public void die()
+    public IEnumerator die()
     {
+        GameObject head, foot;
+        BoxCollider2D head_collider,foot_collider,player_collider;
+        SpriteRenderer render;
+
+        head = this.transform.GetChild(0).gameObject;
+        foot = this.transform.GetChild(1).gameObject;
+        head_collider = head.GetComponent<BoxCollider2D>();
+        foot_collider = foot.GetComponent<BoxCollider2D>();
+        player_collider = this.GetComponent<BoxCollider2D>();
+        render = this.GetComponent<SpriteRenderer>();
+
+        dead = true;
+        animator.SetBool("isDead", true);
+        rigid2D.velocity = new Vector2(0, 0);
+
+        head_collider.enabled = false;
+        foot_collider.enabled = false;
+        player_collider.enabled = false;
+        render.sortingOrder = 2;
+
+        rigid2D.AddForce(new Vector2(0, 800-rigid2D.velocity.y));
+        yield return new WaitForSeconds(2f);
         gameObject.SetActive(false);
         SceneManager.LoadScene("dead_scene");
     }
-
-    /*string get_stage()
-    {
-        return stage_name;
-    }*/
 }

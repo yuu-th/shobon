@@ -53,7 +53,7 @@ public class RengaController : MonoBehaviour
             if (collision.gameObject.tag == "Player" && can_kill == true)
             {
                 Debug.Log("ok");
-                player_controller.die();
+                player_controller.StartCoroutine("die");
             }
         }
         catch (System.NullReferenceException)
