@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class CameraController: MonoBehaviour
 {
-
+    public bool canBack = false;
     GameObject playerObj;
     PlayerController player;
     Transform playerTransform;
@@ -19,9 +19,9 @@ public class CameraController: MonoBehaviour
         nowX = 0;
     }
 
-    void LateUpdate()
+    void FixedUpdate()
     {
-        MoveCamera();
+         MoveCamera();
     }
 
     void MoveCamera()
@@ -31,7 +31,7 @@ public class CameraController: MonoBehaviour
             nowX = playerTransform.position.x;
             transform.position = new Vector3(nowX, transform.position.y, transform.position.z);
         }
-        if(playerTransform.position.x < nowX)
+        if(canBack &&playerTransform.position.x < nowX)
         {
             nowX = playerTransform.position.x;
             transform.position = new Vector3(nowX, transform.position.y, transform.position.z);
