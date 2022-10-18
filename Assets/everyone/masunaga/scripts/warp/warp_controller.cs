@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class warp_controller : MonoBehaviour
 {
-    GameObject warp_target,camera;
+    GameObject warp_target;
     public GameObject warp_pair;
     void Start()
     {
-        camera = GameObject.Find("Main Camera");
+        
     }
 
     void Update()
@@ -23,7 +23,6 @@ public class warp_controller : MonoBehaviour
             Debug.Log(collider.gameObject.transform.parent.gameObject.name);
             StartCoroutine(cancel_warp());
             warp_target.transform.position = new Vector3(warp_pair.transform.position.x, warp_pair.transform.position.y, 0);
-            camera.transform.position = new Vector3(warp_pair.transform.position.x, 1, -10);
         }
         catch (System.NullReferenceException)
         {
