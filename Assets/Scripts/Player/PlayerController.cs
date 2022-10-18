@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rigid2D;
     [SerializeField] private Animator animator;
+
+    public static string stage_name;
 
 
     private float jumpForce = 800.0f;
@@ -32,6 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         this.rigid2D = GetComponent<Rigidbody2D>();
         beforeChangeRunStateX = rigid2D.position.x;
+        stage_name = SceneManager.GetActiveScene().name;
     }
 
 
@@ -114,7 +118,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block")
+        if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block" || collider.gameObject.tag == "pipe" || collider.gameObject.tag == "spring")
         {
 
             if (isGoalFalling)
@@ -146,7 +150,15 @@ public class PlayerController : MonoBehaviour
                 }
                 jump_Jud = true;
                 jumpAfterFrame = 0;
-                collider.gameObject.transform.parent.gameObject.SetActive(false);
+
+                if (collider.gameObject.transform.parent.name == "teki1")
+                {
+                    return;
+                }
+                else
+                {
+                    collider.gameObject.transform.parent.gameObject.SetActive(false);//敵殺す
+                }
             } else if (collider.gameObject.name == "Body")
             {
                 die();
@@ -168,7 +180,7 @@ public class PlayerController : MonoBehaviour
     void OnTriggerExit2D(Collider2D collider)
     {
 
-        if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block")
+        if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block" || collider.gameObject.tag == "pipe" || collider.gameObject.tag == "spring")
         {
 
             Invoke("make_jump_Jud_on", 0.1f);
@@ -182,7 +194,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collider)
     {
-        if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block")
+        if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block" || collider.gameObject.tag == "pipe" || collider.gameObject.tag == "spring")
         {
             StartCoroutine("WaitFor1Frame");
             CancelInvoke("make_jump_Jud_on");
@@ -206,11 +218,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void die()
+    public void die()
     {
         gameObject.SetActive(false);
+        SceneManager.LoadScene("dead_scene");
     }
 
-
-
+    /*string get_stage()
+    {
+        return stage_name;
+    }*/
 }

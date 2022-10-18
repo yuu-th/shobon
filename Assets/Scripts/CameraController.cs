@@ -16,7 +16,6 @@ public class CameraController: MonoBehaviour
         playerObj = GameObject.FindGameObjectWithTag("Player");
         player = playerObj.GetComponent<PlayerController>();
         playerTransform = playerObj.transform;
-        //nowX = playerTransform.position.x;
         nowX = 0;
     }
 
@@ -30,10 +29,13 @@ public class CameraController: MonoBehaviour
         if(playerTransform.position.x > nowX)
         {
             nowX = playerTransform.position.x;
+            transform.position = new Vector3(nowX, transform.position.y, transform.position.z);
         }
-
-        //â°ï˚å¸ÇæÇØí«è]
-        transform.position = new Vector3(nowX, transform.position.y, transform.position.z);
+        if(playerTransform.position.x < nowX)
+        {
+            nowX = playerTransform.position.x;
+            transform.position = new Vector3(nowX, transform.position.y, transform.position.z);
+        }
     }
 
 }

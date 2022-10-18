@@ -10,11 +10,7 @@ public class teki2_controller : MonoBehaviour
     void Start()
     {
         this.rigid2D = GetComponent<Rigidbody2D>();
-
-
     }
-
-
     void FixedUpdate()
     {
 
@@ -27,18 +23,15 @@ public class teki2_controller : MonoBehaviour
         }
         gameObject.transform.localScale = scale;
 
-
         var vec = new Vector2(walkSpeed, rigid2D.velocity.y);
         rigid2D.AddForce(3 * (vec - rigid2D.velocity));
     }
 
     void OnTriggerEnter2D(Collider2D colider)
     {
-        if (colider.tag == "Player")
+        if (colider.gameObject.transform.parent.name != "Player")
         {
-            return;
-
+            walkSpeed *= -1;
         }
-        walkSpeed *= -1;
     }
 }
