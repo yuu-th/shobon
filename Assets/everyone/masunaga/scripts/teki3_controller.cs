@@ -22,7 +22,7 @@ public class teki3_controller : MonoBehaviour
     
     void FixedUpdate()
     {
-        if((start_pos.x >= player.transform.position.x) && (player.transform.position.x >= end_pos.x) && (start_pos.y >= player.transform.position.y) && (player.transform.position.y >= end_pos.y))
+        if((start_pos.x >= player.gameObject.transform.position.x) && (player.gameObject.transform.position.x >= end_pos.x) && (start_pos.y >= player.gameObject.transform.position.y) && (player.gameObject.transform.position.y >= end_pos.y))
         {
             entered = true;
         }
