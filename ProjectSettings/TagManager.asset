@@ -8,6 +8,10 @@ TagManager:
   - Goal
   - GoalToride
   - spring
+  - KillAbleEnemy
+  - Trap
+  - pipe
+  - shader
   layers:
   - Default
   - TransparentFX
