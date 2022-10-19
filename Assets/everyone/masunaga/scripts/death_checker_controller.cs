@@ -23,7 +23,7 @@ public class death_checker_controller : MonoBehaviour
         Debug.Log(collision.gameObject.tag);
         if(collision.gameObject.tag == "Player")
         {
-            player_controller.die();
+            player_controller.StartCoroutine("die");
         }
         else
         {
