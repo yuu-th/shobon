@@ -32,7 +32,9 @@ public class PlayerController : MonoBehaviour
     private bool isGoalWalking = false;
     private float goalSpeed = 4.0f;
 
-    public  bool mazai1 = false;
+    [HideInInspector] public  bool mazai1 = false;
+    [HideInInspector] public bool mazai2 = false;
+    [HideInInspector] public float mazai_speed;
 
     void Start()
     {
@@ -103,11 +105,15 @@ public class PlayerController : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         if (mazai1 == true)
         {
-            x = x * idoumaxspeed * 2;
+            x = x * idoumaxspeed * mazai_speed;
         }
         else
         {
             x = x * idoumaxspeed;
+        }
+        if (mazai2 == true)
+        {
+            x = x * -1;
         }
         var vec = new Vector2(x, rigid2D.velocity.y);
         if (dead == false)

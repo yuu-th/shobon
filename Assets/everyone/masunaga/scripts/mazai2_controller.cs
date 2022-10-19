@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class mazai1_controller : MonoBehaviour
+public class mazai2_controller : MonoBehaviour
 {
     GameObject player;
     PlayerController player_controlelr;
-    public float mazai_speed;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -15,15 +14,14 @@ public class mazai1_controller : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            player_controlelr.mazai_speed = mazai_speed;
-            player_controlelr.mazai1 = true;
+            player_controlelr.mazai2 = true;
             GameObject.Destroy(gameObject);
         }
     }
