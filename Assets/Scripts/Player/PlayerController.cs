@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private bool isGoalWalking = false;
     private float goalSpeed = 4.0f;
 
+    public  bool mazai1 = false;
 
     void Start()
     {
@@ -86,7 +87,6 @@ public class PlayerController : MonoBehaviour
         }
         gameObject.transform.localScale = scale;
 
-
         if (isGoalFalling)
         {
             rigid2D.velocity = new Vector2(0.0f, -goalSpeed);
@@ -101,7 +101,14 @@ public class PlayerController : MonoBehaviour
 
         //�ړ�
         float x = Input.GetAxis("Horizontal");
-        x = x * idoumaxspeed;
+        if (mazai1 == true)
+        {
+            x = x * idoumaxspeed * 2;
+        }
+        else
+        {
+            x = x * idoumaxspeed;
+        }
         var vec = new Vector2(x, rigid2D.velocity.y);
         if (dead == false)
         {
