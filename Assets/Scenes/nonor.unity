@@ -2150,7 +2150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc275d1c16602f448912c5a05612a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canBack: 0
+  canBack: 1
 --- !u!4 &789039345 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 614659780881530666, guid: d80489bb16ead4b4289b68096c11d745, type: 3}
@@ -9641,7 +9641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1262668318383158391, guid: 2b4ce80643b518e429c02230fc2cd070, type: 3}
       propertyPath: Downward
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -1262668318383158391, guid: 2b4ce80643b518e429c02230fc2cd070, type: 3}
       propertyPath: end_pos.x
