@@ -232,14 +232,6 @@ public class PlayerController : MonoBehaviour
             this.jump_Jud = true;
         }
     }
-
-    private void OnTriggerStay(Collider collider)
-    {
-        if ((collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block" || collider.gameObject.tag == "pipe" || collider.gameObject.tag == "spring" || collider.gameObject.tag != "KillAbleEnemy") && this.rigid2D.velocity.y < 0)
-        {
-            this.jump_Jud = true;
-        }
-    }
     IEnumerator WaitFor1Frame()
     {
         yield return new WaitForSeconds(0.1f);
