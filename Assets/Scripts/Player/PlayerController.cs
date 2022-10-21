@@ -108,7 +108,6 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         jumpAfterFrame++;
-        //rigid2D.velocity = new Vector2(rigid2D.velocity.x + 0.1f*Input.GetAxis("Horizontal"), rigid2D.velocity.y);
 
         float horizontal = Input.GetAxis("Horizontal");
 
@@ -232,14 +231,6 @@ public class PlayerController : MonoBehaviour
             this.jump_Jud = true;
         }
     }
-
-    private void OnTriggerStay(Collider collider)
-    {
-        if ((collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block" || collider.gameObject.tag == "pipe" || collider.gameObject.tag == "spring" || collider.gameObject.tag != "KillAbleEnemy") && this.rigid2D.velocity.y < 0)
-        {
-            this.jump_Jud = true;
-        }
-    }
     IEnumerator WaitFor1Frame()
     {
         yield return new WaitForSeconds(0.1f);
@@ -277,6 +268,7 @@ public class PlayerController : MonoBehaviour
         BoxCollider2D head_collider,foot_collider,player_collider;
         SpriteRenderer render;
 
+        dead = true;
         head = this.transform.GetChild(0).gameObject;
         foot = this.transform.GetChild(1).gameObject;
         head_collider = head.GetComponent<BoxCollider2D>();
