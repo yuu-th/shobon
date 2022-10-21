@@ -231,8 +231,9 @@ public class PlayerController : MonoBehaviour
         if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block" || collider.gameObject.tag == "pipe" || collider.gameObject.tag == "spring")
         {
 
-            Invoke("make_jump_Jud_on", 0.1f);
+            //Invoke("make_jump_Jud_on", 0.1f);//ここ
             //this.jump_Jud = true;
+            this.jump_Jud = true;
         }
     }
     IEnumerator WaitFor1Frame()
