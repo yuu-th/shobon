@@ -212,19 +212,19 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("uho");
             }
         }
-    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Goal" && !isGoalFalling && !isGoalWalking)
+
+
+        if (collider.gameObject.tag == "Goal" && !isGoalFalling && !isGoalWalking)
         {
             isGoalFalling = true;
         }
-        if (isGoalWalking && collision.gameObject.tag == "GoalToride")
+        if (isGoalWalking && collider.gameObject.tag == "GoalToride")
         {
             gameObject.SetActive(false);
         }
     }
+
 
     void OnTriggerExit2D(Collider2D collider)
     {
