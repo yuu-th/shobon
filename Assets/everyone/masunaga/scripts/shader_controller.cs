@@ -26,12 +26,6 @@ public class shader_controller : MonoBehaviour
         }
     }
 
-    void OnDestroy()
-    {
-        //@ì¬‚µ‚½ƒ{ƒŠƒ…[ƒ€‚Ìíœ
-        RuntimeUtilities.DestroyVolume(postProcessVolume, true, true);
-    }
-
     void shader_on()
     {
         ChromaticAberration chromatic = ScriptableObject.CreateInstance<ChromaticAberration>();

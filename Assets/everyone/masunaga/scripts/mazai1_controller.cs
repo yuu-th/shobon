@@ -5,12 +5,12 @@ using UnityEngine;
 public class mazai1_controller : MonoBehaviour
 {
     GameObject player;
-    PlayerController player_controlelr;
+    PlayerController player_controller;
     public float mazai_speed;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        player_controlelr = player.GetComponent<PlayerController>();
+        player_controller = player.GetComponent<PlayerController>();
     }
 
     void Update()
@@ -22,8 +22,9 @@ public class mazai1_controller : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            player_controlelr.mazai_speed = mazai_speed;
-            player_controlelr.mazai1 = true;
+            player_controller.get_mazai = true;
+            player_controller.mazai_speed = mazai_speed;
+            player_controller.mazai1 = true;
             GameObject.Destroy(gameObject);
         }
     }
