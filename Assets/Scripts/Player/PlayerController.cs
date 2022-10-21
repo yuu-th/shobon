@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.PostProcessing;
 
 public class PlayerController : MonoBehaviour
 {
+    private PostProcessVolume postProcessVolume;
+
+    GameObject cameara_object;
+    Camera camera_render;
+
     Rigidbody2D rigid2D;
     [SerializeField] private Animator animator;
 
@@ -35,17 +41,41 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public  bool mazai1 = false;
     [HideInInspector] public bool mazai2 = false;
     [HideInInspector] public float mazai_speed;
+    [HideInInspector] public bool get_mazai = false;
+    public int mazai_counter = 0;
+    float get_time = 0;
 
     void Start()
     {
         this.rigid2D = GetComponent<Rigidbody2D>();
         beforeChangeRunStateX = rigid2D.position.x;
         stage_name = SceneManager.GetActiveScene().name;
+        cameara_object = GameObject.Find("Main Camera");
+        camera_render = cameara_object.GetComponent<Camera>();
     }
 
 
     void Update()
     {
+        if(mazai_counter >= 5)//カフェイン中毒
+        {
+            mazai_counter = 0;
+            dead = true;
+            StartCoroutine(die());
+        }
+        float now_time = 0;
+        now_time = Time.time;
+        if (get_mazai == true)
+        {
+            Debug.Log("mazai");
+            get_time = Time.time;
+            mazai_counter += 1;
+            get_mazai = false;
+        }
+        if ((now_time - get_time) >= 15)
+        {
+            mazai_counter = 0;
+        }
         //�W�����v
         if (Input.GetKeyDown(KeyCode.Space) && !jump_Jud && dead == false)
         {

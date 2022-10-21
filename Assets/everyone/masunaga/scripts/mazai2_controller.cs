@@ -5,11 +5,11 @@ using UnityEngine;
 public class mazai2_controller : MonoBehaviour
 {
     GameObject player;
-    PlayerController player_controlelr;
+    PlayerController player_controller;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        player_controlelr = player.GetComponent<PlayerController>();
+        player_controller = player.GetComponent<PlayerController>();
     }
 
     void Update()
@@ -21,7 +21,8 @@ public class mazai2_controller : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            player_controlelr.mazai2 = true;
+            player_controller.get_mazai = true;
+            player_controller.mazai2 = true;
             GameObject.Destroy(gameObject);
         }
     }
