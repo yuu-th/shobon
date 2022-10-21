@@ -212,12 +212,15 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("uho");
             }
         }
+    }
 
-        if (collider.gameObject.tag == "Goal" && !isGoalFalling && !isGoalWalking)
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Goal" && !isGoalFalling && !isGoalWalking)
         {
             isGoalFalling = true;
         }
-        if (isGoalWalking && collider.gameObject.tag == "GoalToride")
+        if (isGoalWalking && collision.gameObject.tag == "GoalToride")
         {
             gameObject.SetActive(false);
         }
