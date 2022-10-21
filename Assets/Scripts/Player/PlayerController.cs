@@ -222,17 +222,13 @@ public class PlayerController : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-
-
     }
+
     void OnTriggerExit2D(Collider2D collider)
     {
 
         if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block" || collider.gameObject.tag == "pipe" || collider.gameObject.tag == "spring")
         {
-
-            //Invoke("make_jump_Jud_on", 0.1f);//ここ
-            //this.jump_Jud = true;
             this.jump_Jud = true;
         }
     }
