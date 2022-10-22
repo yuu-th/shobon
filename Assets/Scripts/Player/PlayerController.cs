@@ -16,6 +16,13 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rigid2D;
     [SerializeField] private Animator animator;
+    
+
+    public AudioClip death_sound;
+    public AudioClip jump_sound;
+
+    private AudioSource audioSource;
+
 
     public static string stage_name;
 
@@ -49,6 +56,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         this.rigid2D = GetComponent<Rigidbody2D>();
         beforeChangeRunStateX = rigid2D.position.x;
         stage_name = SceneManager.GetActiveScene().name;
@@ -81,6 +89,7 @@ public class PlayerController : MonoBehaviour
         //�W�����v
         if (Input.GetKeyDown(KeyCode.Space) && !jump_Jud && dead == false)
         {
+            audioSource.PlayOneShot(jump_sound);
             if (rigid2D.velocity.x > 1.0f)
             {
                 this.rigid2D.AddForce(transform.up * jumpForce + new Vector3(0, 80.0f));
@@ -93,6 +102,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.Space) && jump_Jud && jumpAfterFrame <= 6 && dead == false)
         {
+            audioSource.PlayOneShot(jump_sound);
             float tmp = -140.0f;
             if (rigid2D.velocity.x > 1.0f)
             {
@@ -112,6 +122,19 @@ public class PlayerController : MonoBehaviour
     {
         jumpAfterFrame++;
 
+        if (isGoalFalling)
+        {
+            rigid2D.velocity = new Vector2(0.0f, -goalSpeed);
+            return;
+
+        }
+        else if (isGoalWalking)
+        {
+            rigid2D.velocity = new Vector2(goalSpeed, rigid2D.velocity.y);
+            return;
+        }
+
+
         float horizontal = Input.GetAxis("Horizontal");
 
         Vector3 scale = gameObject.transform.localScale;
@@ -121,16 +144,7 @@ public class PlayerController : MonoBehaviour
         }
         gameObject.transform.localScale = scale;
 
-        if (isGoalFalling)
-        {
-            rigid2D.velocity = new Vector2(0.0f, -goalSpeed);
-            return;
-
-        } else if (isGoalWalking)
-        {
-            rigid2D.velocity = new Vector2(goalSpeed, rigid2D.velocity.y);
-        }
-
+        
 
 
         //�ړ�
@@ -275,6 +289,10 @@ public class PlayerController : MonoBehaviour
         BoxCollider2D head_collider,foot_collider,player_collider;
         SpriteRenderer render;
 
+        audioSource.Stop();
+
+        audioSource.PlayOneShot(death_sound);
+
         dead = true;
         head = this.transform.GetChild(0).gameObject;
         foot = this.transform.GetChild(1).gameObject;
@@ -287,13 +305,14 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("isDead", true);
         rigid2D.velocity = new Vector2(0, 0);
 
+        yield return new WaitForSeconds(0.5f);
+
         head_collider.enabled = false;
         foot_collider.enabled = false;
         player_collider.enabled = false;
         render.sortingOrder = 2;
-
         rigid2D.AddForce(new Vector2(0, 800-rigid2D.velocity.y));
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3.4f);
         gameObject.SetActive(false);
         SceneManager.LoadScene("dead_scene");
     }
