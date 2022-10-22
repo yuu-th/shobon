@@ -11,24 +11,35 @@ public class mazai4_contorller : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         player_controller = player.GetComponent<PlayerController>();
-        shader = GameObject.Find("shader_manager");
-        shader_controller = shader.GetComponent<shader_controller>();
+        try
+        {
+            shader = GameObject.Find("shader_manager");
+            shader_controller = shader.GetComponent<shader_controller>();
+        }
+        catch (System.NullReferenceException)
+        {
+
+        }
     }
 
-    void Update()
-    {
-
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
+            Debug.Log("ikinnnakasu");
             player_controller.get_mazai = true;
             player_controller.mazai1 = false;
             player_controller.mazai2 = false;
-            shader_controller.mazai3 = false;
+            try
+            {
+                shader_controller.mazai3 = false;
+            }
+            catch (System.NullReferenceException)
+            {
+            }
             GameObject.Destroy(gameObject);
+
+
         }
     }
 }

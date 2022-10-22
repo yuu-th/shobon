@@ -7,6 +7,8 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class PlayerController : MonoBehaviour
 {
+
+
     private PostProcessVolume postProcessVolume;
 
     GameObject cameara_object;
@@ -103,6 +105,7 @@ public class PlayerController : MonoBehaviour
 
         animator.SetInteger("runState", runState);
         animator.SetBool("isJumping", jump_Jud);
+        animator.SetInteger("mazai_counter",mazai_counter);
 
     }
     void FixedUpdate()
@@ -160,6 +163,7 @@ public class PlayerController : MonoBehaviour
                 runState = 1;
             }
         }
+
 
     }
 
