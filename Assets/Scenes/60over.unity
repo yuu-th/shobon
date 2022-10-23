@@ -324,6 +324,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 272311198}
     m_Modifications:
+    - target: {fileID: -1837083988606679774, guid: 7f199db8d33404644b4095c9b20350a3, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2270912097979678123, guid: 7f199db8d33404644b4095c9b20350a3, type: 3}
       propertyPath: m_EdgeRadius
       value: 0.1
@@ -6357,6 +6361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc275d1c16602f448912c5a05612a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canBack: 0
 --- !u!1 &1932255718
 GameObject:
   m_ObjectHideFlags: 0
