@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RengaController : MonoBehaviour
 {
+    public AudioClip broken_sound;
+    private AudioSource audioSource;
 
     public Vector2 start_pos, end_pos;
     public bool can_kill = false, Downward = false;
@@ -16,6 +18,7 @@ public class RengaController : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         player_controller = player.GetComponent<PlayerController>();
+        audioSource = player.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -42,7 +45,9 @@ public class RengaController : MonoBehaviour
     {
         if(collider.gameObject.name == "Head" && can_kill == false)
         {
+            audioSource.PlayOneShot(broken_sound);
             Destroy(gameObject,0.05f);
+            
         }
     }
 
@@ -53,7 +58,7 @@ public class RengaController : MonoBehaviour
             if (collision.gameObject.tag == "Player" && can_kill == true)
             {
                 Debug.Log("ok");
-                player_controller.die();
+                player_controller.StartCoroutine("die");
             }
         }
         catch (System.NullReferenceException)

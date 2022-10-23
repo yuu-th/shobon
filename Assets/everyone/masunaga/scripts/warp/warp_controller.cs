@@ -20,13 +20,17 @@ public class warp_controller : MonoBehaviour
     {
         try {
             warp_target = collider.gameObject.transform.parent.gameObject;
-            Debug.Log(collider.gameObject.transform.parent.gameObject.name);
+            if (warp_target.tag == "Untagged")
+            {
+                return;
+            }
+            Debug.Log(warp_pair.transform.position);
             StartCoroutine(cancel_warp());
             warp_target.transform.position = new Vector3(warp_pair.transform.position.x, warp_pair.transform.position.y, 0);
         }
         catch (System.NullReferenceException)
         {
-
+            
         }
     }
 
@@ -40,10 +44,13 @@ public class warp_controller : MonoBehaviour
 
     IEnumerator cancel_warp()
     {
-        CircleCollider2D warp_pair_collider = warp_pair.GetComponent<CircleCollider2D>();
-        warp_pair_collider.enabled = false;
-        yield return new WaitForSeconds(1.0f);
-        warp_pair_collider.enabled = true;
+        if (warp_pair.gameObject.tag == "trap")
+        {
+            CircleCollider2D warp_pair_collider = warp_pair.GetComponent<CircleCollider2D>();
+            warp_pair_collider.enabled = false;
+            yield return new WaitForSeconds(1.0f);
+            warp_pair_collider.enabled = true;
+        }
 
     }
 }

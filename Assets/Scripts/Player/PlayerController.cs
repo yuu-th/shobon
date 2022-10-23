@@ -3,11 +3,26 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.PostProcessing;
 
 public class PlayerController : MonoBehaviour
 {
+
+
+    private PostProcessVolume postProcessVolume;
+
+    GameObject cameara_object;
+    Camera camera_render;
+
     Rigidbody2D rigid2D;
     [SerializeField] private Animator animator;
+    
+
+    public AudioClip death_sound;
+    public AudioClip jump_sound;
+
+    private AudioSource audioSource;
+
 
     public static string stage_name;
 
@@ -22,6 +37,8 @@ public class PlayerController : MonoBehaviour
 
     private int jumpAfterFrame = 0;
 
+    private bool dead = false;
+
 
     private float beforeChangeRunStateX;
     private int runState = 1;
@@ -30,32 +47,62 @@ public class PlayerController : MonoBehaviour
     private bool isGoalWalking = false;
     private float goalSpeed = 4.0f;
 
+    [HideInInspector] public  bool mazai1 = false;
+    [HideInInspector] public bool mazai2 = false;
+    [HideInInspector] public float mazai_speed;
+    [HideInInspector] public bool get_mazai = false;
+    public int mazai_counter = 0;
+    float get_time = 0;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         this.rigid2D = GetComponent<Rigidbody2D>();
         beforeChangeRunStateX = rigid2D.position.x;
         stage_name = SceneManager.GetActiveScene().name;
+        cameara_object = GameObject.Find("Main Camera");
+        camera_render = cameara_object.GetComponent<Camera>();
     }
 
 
     void Update()
     {
-        //�W�����v
-        if (Input.GetKeyDown(KeyCode.Space) && !jump_Jud)
+        if(mazai_counter >= 5)//カフェイン中毒
         {
+            mazai_counter = 0;
+            dead = true;
+            StartCoroutine(die());
+        }
+        float now_time = 0;
+        now_time = Time.time;
+        if (get_mazai == true)
+        {
+            Debug.Log("mazai");
+            get_time = Time.time;
+            mazai_counter += 1;
+            get_mazai = false;
+        }
+        if ((now_time - get_time) >= 15)
+        {
+            mazai_counter = 0;
+        }
+        //�W�����v
+        if (Input.GetKeyDown(KeyCode.Space) && !jump_Jud && dead == false)
+        {
+            audioSource.PlayOneShot(jump_sound);
             if (rigid2D.velocity.x > 1.0f)
             {
                 this.rigid2D.AddForce(transform.up * jumpForce + new Vector3(0, 80.0f));
             }
             else {
-                this.rigid2D.AddForce(transform.up * jumpForce);
+                this.rigid2D.AddForce(transform.up * jumpForce );
             }
             jump_Jud = true;
             jumpAfterFrame = 0;
         }
-        else if (Input.GetKeyUp(KeyCode.Space) && jump_Jud && jumpAfterFrame <= 6)
+        else if (Input.GetKeyUp(KeyCode.Space) && jump_Jud && jumpAfterFrame <= 6 && dead == false)
         {
+            audioSource.PlayOneShot(jump_sound);
             float tmp = -140.0f;
             if (rigid2D.velocity.x > 1.0f)
             {
@@ -68,40 +115,57 @@ public class PlayerController : MonoBehaviour
 
         animator.SetInteger("runState", runState);
         animator.SetBool("isJumping", jump_Jud);
+        animator.SetInteger("mazai_counter",mazai_counter);
 
     }
     void FixedUpdate()
     {
         jumpAfterFrame++;
-        //rigid2D.velocity = new Vector2(rigid2D.velocity.x + 0.1f*Input.GetAxis("Horizontal"), rigid2D.velocity.y);
-
-        float horizontal = Input.GetAxis("Horizontal");
-
-        Vector3 scale = gameObject.transform.localScale;
-        if (horizontal < 0 && scale.x > 0 || horizontal > 0 && scale.x < 0)
-        {
-            scale.x *= -1;
-        }
-        gameObject.transform.localScale = scale;
-
 
         if (isGoalFalling)
         {
             rigid2D.velocity = new Vector2(0.0f, -goalSpeed);
             return;
 
-        } else if (isGoalWalking)
+        }
+        else if (isGoalWalking)
         {
             rigid2D.velocity = new Vector2(goalSpeed, rigid2D.velocity.y);
+            return;
         }
 
+
+        float horizontal = Input.GetAxis("Horizontal");
+
+        Vector3 scale = gameObject.transform.localScale;
+        if (horizontal < 0 && scale.x > 0 || horizontal > 0 && scale.x < 0 && dead == false)
+        {
+            scale.x *= -1;
+        }
+        gameObject.transform.localScale = scale;
+
+        
 
 
         //�ړ�
         float x = Input.GetAxis("Horizontal");
-        x = x * idoumaxspeed;
+        if (mazai1 == true)
+        {
+            x = x * idoumaxspeed * mazai_speed;
+        }
+        else
+        {
+            x = x * idoumaxspeed;
+        }
+        if (mazai2 == true)
+        {
+            x = x * -1;
+        }
         var vec = new Vector2(x, rigid2D.velocity.y);
-        rigid2D.AddForce(3 * (vec - rigid2D.velocity));
+        if (dead == false)
+        {
+            rigid2D.AddForce(3 * (vec - rigid2D.velocity));
+        }
 
 
         if (Math.Abs(beforeChangeRunStateX - rigid2D.position.x) > 0.75f)
@@ -113,6 +177,7 @@ public class PlayerController : MonoBehaviour
                 runState = 1;
             }
         }
+
 
     }
 
@@ -161,10 +226,12 @@ public class PlayerController : MonoBehaviour
                 }
             } else if (collider.gameObject.name == "Body")
             {
-                die();
+                StartCoroutine(die());
                 Debug.Log("uho");
             }
         }
+
+
 
         if (collider.gameObject.tag == "Goal" && !isGoalFalling && !isGoalWalking)
         {
@@ -174,17 +241,15 @@ public class PlayerController : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-
-
     }
+
+
     void OnTriggerExit2D(Collider2D collider)
     {
 
         if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block" || collider.gameObject.tag == "pipe" || collider.gameObject.tag == "spring")
         {
-
-            Invoke("make_jump_Jud_on", 0.1f);
-            //this.jump_Jud = true;
+            this.jump_Jud = true;
         }
     }
     IEnumerator WaitFor1Frame()
@@ -213,19 +278,42 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "KillAbleEnemy")
         {
             jumpAfterFrame = 0;
-            die();
+            StartCoroutine(die());
             Debug.Log("uho");
         }
     }
 
-    public void die()
+    public IEnumerator die()
     {
+        GameObject head, foot;
+        BoxCollider2D head_collider,foot_collider,player_collider;
+        SpriteRenderer render;
+
+        audioSource.Stop();
+
+        audioSource.PlayOneShot(death_sound);
+
+        dead = true;
+        head = this.transform.GetChild(0).gameObject;
+        foot = this.transform.GetChild(1).gameObject;
+        head_collider = head.GetComponent<BoxCollider2D>();
+        foot_collider = foot.GetComponent<BoxCollider2D>();
+        player_collider = this.GetComponent<BoxCollider2D>();
+        render = this.GetComponent<SpriteRenderer>();
+
+        dead = true;
+        animator.SetBool("isDead", true);
+        rigid2D.velocity = new Vector2(0, 0);
+
+        yield return new WaitForSeconds(0.5f);
+
+        head_collider.enabled = false;
+        foot_collider.enabled = false;
+        player_collider.enabled = false;
+        render.sortingOrder = 2;
+        rigid2D.AddForce(new Vector2(0, 800-rigid2D.velocity.y));
+        yield return new WaitForSeconds(3.4f);
         gameObject.SetActive(false);
         SceneManager.LoadScene("dead_scene");
     }
-
-    /*string get_stage()
-    {
-        return stage_name;
-    }*/
 }

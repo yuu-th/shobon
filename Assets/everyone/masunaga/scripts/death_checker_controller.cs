@@ -12,7 +12,6 @@ public class death_checker_controller : MonoBehaviour
         player_controller = player.GetComponent<PlayerController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -20,14 +19,16 @@ public class death_checker_controller : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.tag);
-        if(collision.gameObject.tag == "Player")
+        Debug.Log("death_checkr"+collision.gameObject.tag);
+
+        if (collision.transform.parent.gameObject.tag == "Player")
         {
-            player_controller.die();
+            player_controller.StartCoroutine("die");
         }
-        else
+        else if (collision.gameObject.name !="Player")
         {
-            GameObject.Destroy(collision.gameObject);
+            Debug.Log("death_checkr_" + collision.gameObject.name);
+            GameObject.Destroy(collision.transform.parent.gameObject);
         }
     }
 }

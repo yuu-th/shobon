@@ -8,6 +8,12 @@ TagManager:
   - Goal
   - GoalToride
   - spring
+  - KillAbleEnemy
+  - Trap
+  - pipe
+  - shader
+  - Background
+  - Stage
   layers:
   - Default
   - TransparentFX
@@ -42,6 +48,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Decorations
+    uniqueID: 746326655
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
