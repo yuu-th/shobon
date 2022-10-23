@@ -695,6 +695,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: mazai1
       objectReference: {fileID: 0}
+    - target: {fileID: 9055143972686680238, guid: 81251813050807b44947c56f5e8d6a9b, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 9055143972686680245, guid: 81251813050807b44947c56f5e8d6a9b, type: 3}
       propertyPath: mazai_speed
       value: 2
