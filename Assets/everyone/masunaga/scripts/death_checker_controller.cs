@@ -19,13 +19,15 @@ public class death_checker_controller : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.tag);
-        if(collision.transform.parent.gameObject.tag == "Player")
+        Debug.Log("death_checkr"+collision.gameObject.tag);
+
+        if (collision.transform.parent.gameObject.tag == "Player")
         {
             player_controller.StartCoroutine("die");
         }
-        else
+        else if (collision.gameObject.name !="Player")
         {
+            Debug.Log("death_checkr_" + collision.gameObject.name);
             GameObject.Destroy(collision.transform.parent.gameObject);
         }
     }

@@ -42,7 +42,10 @@ public class Teki0Controller : MonoBehaviour
         }
         catch (System.NullReferenceException)
         {
-
+            if (colider.gameObject.name != "Player")
+            {
+                walkSpeed *= -1;
+            }
         }
     }
 }
