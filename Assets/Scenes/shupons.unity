@@ -11323,7 +11323,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.627451, g: 0.7058824, b: 0.98039216, a: 0}
+  m_BackGroundColor: {r: 0.9811321, g: 0.38156846, b: 0.096261986, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -11966,6 +11966,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1369268336}
     m_Modifications:
+    - target: {fileID: -1837083988606679774, guid: 7f199db8d33404644b4095c9b20350a3, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1837083988606679774, guid: 7f199db8d33404644b4095c9b20350a3, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c5ce288859730e94a9566dedc05e30e6, type: 3}
     - target: {fileID: 7714104997583068427, guid: 7f199db8d33404644b4095c9b20350a3, type: 3}
       propertyPath: m_Name
       value: Player
@@ -11976,7 +11984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7714104997583068428, guid: 7f199db8d33404644b4095c9b20350a3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -76.94
+      value: -75
       objectReference: {fileID: 0}
     - target: {fileID: 7714104997583068428, guid: 7f199db8d33404644b4095c9b20350a3, type: 3}
       propertyPath: m_LocalPosition.y
