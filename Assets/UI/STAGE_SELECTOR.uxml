@@ -2,34 +2,34 @@
     <Style src="project://database/Assets/UI/stylesheet.uss?fileID=7433441132597879392&amp;guid=1c1a1d0a739ced44898f59cf54f187d7&amp;type=3#stylesheet" />
     <ui:Button display-tooltip-when-elided="true" style="width: 37px; height: 38px; background-image: url(&apos;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=1169890249420208065&amp;guid=cd93182b790edaa418fbeafa7e445a42&amp;type=3#arrow-left&apos;);" />
     <ui:ScrollView style="width: 593px; height: 487px;">
-        <ui:VisualElement style="flex-direction: row; align-items: center;">
+        <ui:VisualElement name="level_wrapper_wrapper" style="flex-direction: row; align-items: center;">
             <ui:Label text="EASY" display-tooltip-when-elided="true" style="flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 90px; font-size: 20px; -unity-text-align: upper-center;" />
-            <ui:VisualElement style="width: 585px; height: 86px; flex-direction: row; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;">
-                <ui:Button text="Button" display-tooltip-when-elided="true" class="stage_button easy_button" />
+            <ui:VisualElement name="level_wrapper" style="width: 585px; height: 86px; flex-direction: row; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;">
+                <ui:Button text="Button" display-tooltip-when-elided="true" name="easy_button" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-direction: row; align-items: center;">
+        <ui:VisualElement name="level_wrapper_wrapper" style="flex-direction: row; align-items: center;">
             <ui:Label text="NORMAL" display-tooltip-when-elided="true" style="flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 90px; font-size: 20px; -unity-text-align: upper-center;" />
-            <ui:VisualElement style="width: 585px; height: 86px; flex-direction: row; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;">
-                <ui:Button text="Button" display-tooltip-when-elided="true" class="stage_button normal_button" />
+            <ui:VisualElement name="level_wrapper" style="width: 585px; height: 86px; flex-direction: row; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;">
+                <ui:Button text="Button" display-tooltip-when-elided="true" name="normal_button" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-direction: row; align-items: center;">
+        <ui:VisualElement name="level_wrapper_wrapper" style="flex-direction: row; align-items: center;">
             <ui:Label text="HARD" display-tooltip-when-elided="true" style="flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 90px; font-size: 20px; -unity-text-align: upper-center;" />
-            <ui:VisualElement style="width: 585px; height: 86px; flex-direction: row; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;">
-                <ui:Button text="Button" display-tooltip-when-elided="true" class="stage_button hard_button" />
+            <ui:VisualElement name="level_wrapper" style="width: 585px; height: 86px; flex-direction: row; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;">
+                <ui:Button text="Button" display-tooltip-when-elided="true" name="hard_button" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-direction: row; align-items: center;">
+        <ui:VisualElement name="level_wrapper_wrapper" style="flex-direction: row; align-items: center;">
             <ui:Label text="EXPERT" display-tooltip-when-elided="true" style="flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 90px; font-size: 20px; -unity-text-align: upper-center;" />
-            <ui:VisualElement style="width: 585px; height: 86px; flex-direction: row; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;">
-                <ui:Button text="Button" display-tooltip-when-elided="true" class="stage_button expert_button" />
+            <ui:VisualElement name="level_wrapper" style="width: 585px; height: 86px; flex-direction: row; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;">
+                <ui:Button text="Button" display-tooltip-when-elided="true" name="expert_button" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-direction: row; align-items: center;">
+        <ui:VisualElement name="level_wrapper_wrapper" style="flex-direction: row; align-items: center;">
             <ui:Label text="MASTER" display-tooltip-when-elided="true" style="flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 90px; font-size: 20px; -unity-text-align: upper-center;" />
-            <ui:VisualElement style="width: 585px; height: 86px; flex-direction: row; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;">
-                <ui:Button text="Button" display-tooltip-when-elided="true" class="stage_button master_button" />
+            <ui:VisualElement name="level_wrapper" style="width: 585px; height: 86px; flex-direction: row; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;">
+                <ui:Button text="Button" display-tooltip-when-elided="true" name="master_button" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:ScrollView>

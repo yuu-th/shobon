@@ -7,19 +7,42 @@ using UnityEngine.UIElements;
 public class STAGE_SELECTOR_CONTROLLER : MonoBehaviour
 {
     public UIDocument uIDocument = null;
-    private VisualElement body;
+    private VisualElement root;
     private Button button;
 
-    private VisualElement[] level_wrapper_array = new VisualElement[5];
-    // Start is called before the first frame update
+    private List<VisualElement> level_wrapper_array = new List<VisualElement>();
+    private List<Button> button_list = new List<Button>();
     void Start()
     {
-        this.body = this.uIDocument.rootVisualElement;
-        this.button = this.body.Query<Button>();
+        this.root = this.uIDocument.rootVisualElement;
+        
+        
+        Button button = new Button();
+        button.name = "easy_button";
+        button.text = "This is button3.";
+        this.root.Add(button);
+
+        root.Query<Button>("easy_button").ForEach((Button ele) => {
+            button_list.Add(ele);
+        });
+
+        this.button = this.root.Query<Button>();
         this.button.clickable.clicked += () => {
             Debug.Log("Button clicked");
         };
+        root.Query<VisualElement>("level_wrapper").ForEach((VisualElement ele) => {
+            this.level_wrapper_array.Add(ele);
+            //ele.Query<Button>().ForEach((Button button) => {
+            //    this.button_list.Add(button);
+            //    button.clickable.clicked += () => {
+            //        select_stage(button.text);
+            //    };
+            //});
+            
+        });
+        Debug.Log(this.level_wrapper_array.Count);
         
+        Debug.Log(this.button_list.Count);
     }
 
     // Update is called once per frame
