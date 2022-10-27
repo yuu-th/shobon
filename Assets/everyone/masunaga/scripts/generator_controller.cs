@@ -14,7 +14,7 @@ public class generator_controller : MonoBehaviour
         end_time = Time.time + delay;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Debug.Log(end_time - first_time);
         if(end_time - first_time >= delay) 
