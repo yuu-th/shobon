@@ -1,27 +1,27 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/stylesheet.uss?fileID=7433441132597879392&amp;guid=1c1a1d0a739ced44898f59cf54f187d7&amp;type=3#stylesheet" />
-    <ui:Button display-tooltip-when-elided="true" style="width: 37px; height: 38px; background-image: url(&apos;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=1169890249420208065&amp;guid=cd93182b790edaa418fbeafa7e445a42&amp;type=3#arrow-left&apos;); opacity: 0.3;" />
-    <ui:ScrollView name="ScrollView" style="width: 607px; height: 590px;">
-        <ui:VisualElement name="level_wrapper_wrapper" style="flex-direction: row; align-items: center;">
-            <ui:Label text="EASY" display-tooltip-when-elided="true" style="color: rgba(24, 125, 28, 0.69); flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 90px; font-size: 20px; -unity-text-align: upper-center;" />
-            <ui:VisualElement name="level_wrapper" style="width: 585px; height: 86px; flex-direction: row; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;" />
+    <ui:Button display-tooltip-when-elided="true" style="width: 130px; height: 130px; background-image: url(&apos;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=1169890249420208065&amp;guid=cd93182b790edaa418fbeafa7e445a42&amp;type=3#arrow-left&apos;); opacity: 0.3; margin-left: 20px; margin-right: 20px; margin-top: 20px; margin-bottom: 20px;" />
+    <ui:ScrollView name="ScrollView" style="width: 1801px; height: 1659px;">
+        <ui:VisualElement name="level_wrapper_wrapper" style="flex-direction: row; align-items: center; width: 1857px;">
+            <ui:Label text="EASY" display-tooltip-when-elided="true" style="color: rgba(24, 125, 28, 0.69); flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 230px; font-size: 50px; -unity-text-align: upper-center;" />
+            <ui:VisualElement name="level_wrapper" style="width: auto; height: 300px; flex-direction: row; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;" />
         </ui:VisualElement>
         <ui:VisualElement name="level_wrapper_wrapper" style="flex-direction: row; align-items: center;">
-            <ui:Label text="NORMAL" display-tooltip-when-elided="true" style="color: rgba(18, 107, 152, 0.69); flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 90px; font-size: 20px; -unity-text-align: upper-center;" />
-            <ui:VisualElement name="level_wrapper" style="width: 585px; height: 86px; flex-direction: row; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;" />
+            <ui:Label text="NORMAL" display-tooltip-when-elided="true" style="color: rgba(18, 107, 152, 0.69); flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 230px; font-size: 50px; -unity-text-align: upper-center;" />
+            <ui:VisualElement name="level_wrapper" style="width: auto; height: 300px; flex-direction: row; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;" />
         </ui:VisualElement>
         <ui:VisualElement name="level_wrapper_wrapper" style="flex-direction: row; align-items: center;">
-            <ui:Label text="HARD" display-tooltip-when-elided="true" style="color: rgb(132, 98, 3); flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 90px; font-size: 20px; -unity-text-align: upper-center;" />
-            <ui:VisualElement name="level_wrapper" style="width: 585px; height: 86px; flex-direction: row; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;" />
+            <ui:Label text="HARD" display-tooltip-when-elided="true" style="color: rgb(132, 98, 3); flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 230px; font-size: 50px; -unity-text-align: upper-center;" />
+            <ui:VisualElement name="level_wrapper" style="width: auto; height: 300px; flex-direction: row; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;" />
         </ui:VisualElement>
         <ui:VisualElement name="level_wrapper_wrapper" style="flex-direction: row; align-items: center;">
-            <ui:Label text="EXPERT" display-tooltip-when-elided="true" style="color: rgb(96, 24, 33); flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 90px; font-size: 20px; -unity-text-align: upper-center;" />
-            <ui:VisualElement name="level_wrapper" style="width: 585px; height: 86px; flex-direction: row; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;" />
+            <ui:Label text="EXPERT" display-tooltip-when-elided="true" style="color: rgb(96, 24, 33); flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 230px; font-size: 50px; -unity-text-align: upper-center;" />
+            <ui:VisualElement name="level_wrapper" style="width: auto; height: 300px; flex-direction: row; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;" />
         </ui:VisualElement>
         <ui:VisualElement name="level_wrapper_wrapper" style="flex-direction: row; align-items: center;">
-            <ui:Label text="MASTER" display-tooltip-when-elided="true" style="color: rgb(91, 2, 101); flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 90px; font-size: 20px; -unity-text-align: upper-center;" />
-            <ui:VisualElement name="level_wrapper" style="width: 585px; height: 86px; flex-direction: row; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;" />
+            <ui:Label text="MASTER" display-tooltip-when-elided="true" style="color: rgb(91, 2, 101); flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 230px; font-size: 50px; -unity-text-align: upper-center;" />
+            <ui:VisualElement name="level_wrapper" style="width: auto; height: 300px; flex-direction: row; margin-left: 5px; margin-right: 5px; margin-top: 5px; margin-bottom: 5px;" />
         </ui:VisualElement>
-        <ui:Label text="「esc」を押して自殺できるよ(^o^)" display-tooltip-when-elided="true" style="height: -8px; font-size: 20px; color: rgba(255, 255, 255, 255);" />
+        <ui:Label text="「esc」を押して自殺できるよ(^o^)" display-tooltip-when-elided="true" style="height: 66px; font-size: 50px; color: rgb(255, 255, 255);" />
     </ui:ScrollView>
 </ui:UXML>
