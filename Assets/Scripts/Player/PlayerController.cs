@@ -67,6 +67,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKey(KeyCode.Escape)){
+            SceneManager.LoadScene("STAGE_SELECTOR");
+         }
         if(mazai_counter >= 5)//カフェイン中毒
         {
             mazai_counter = 0;
@@ -240,6 +243,8 @@ public class PlayerController : MonoBehaviour
         if (isGoalWalking && collider.gameObject.tag == "GoalToride")
         {
             gameObject.SetActive(false);
+            StartCoroutine(Wait(5.0f));
+            SceneManager.LoadScene("STAGE_SELECTOR");
         }
     }
 
@@ -255,6 +260,10 @@ public class PlayerController : MonoBehaviour
     IEnumerator WaitFor1Frame()
     {
         yield return new WaitForSeconds(0.1f);
+    }
+    IEnumerator Wait(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
     }
 
     void OnTriggerStay2D(Collider2D collider)

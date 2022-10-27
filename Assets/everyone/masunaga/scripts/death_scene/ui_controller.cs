@@ -7,18 +7,20 @@ using UnityEngine.SceneManagement;
 public class ui_controller : MonoBehaviour
 {
     public GameObject text_object = null;
-    int player_score = 5;
+    private int life;
     string stage_name;
     void Start()
     {
-        
+        this.life = PlayerPrefs.GetInt("LIFE")-1;
+        PlayerPrefs.SetInt("LIFE", life);
+        PlayerPrefs.Save();
     }
 
     // Update is called once per frame
     void Update()
     {
         Text score_text = text_object.GetComponent<Text>();
-        score_text.text = "Å~     " + player_score;
+        score_text.text = "ÔøΩ~     " + life;
         Invoke("retry", 3);
     }
 
