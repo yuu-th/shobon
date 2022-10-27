@@ -21,7 +21,7 @@ public class RengaController : MonoBehaviour
         audioSource = player.GetComponent<AudioSource>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if ((start_pos.x >= player.gameObject.transform.position.x) && (player.gameObject.transform.position.x >= end_pos.x) && (start_pos.y >= player.gameObject.transform.position.y) && (player.gameObject.transform.position.y >= end_pos.y))
         {

@@ -5,11 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class CameraController: MonoBehaviour
 {
+    public bool can_y = false;
     public bool canBack = false;
     GameObject playerObj;
     PlayerController player;
     Transform playerTransform;
     protected float nowX;
+    float nowY;
 
     void Start()
     {
@@ -17,6 +19,7 @@ public class CameraController: MonoBehaviour
         player = playerObj.GetComponent<PlayerController>();
         playerTransform = playerObj.transform;
         nowX = 0;
+        nowY = 0;
     }
 
     void FixedUpdate()
@@ -35,6 +38,19 @@ public class CameraController: MonoBehaviour
         {
             nowX = playerTransform.position.x;
             transform.position = new Vector3(nowX, transform.position.y, transform.position.z);
+        }
+        if(can_y && playerTransform.position.y > nowY)
+        {
+            nowY = playerTransform.position.y;
+            transform.position = new Vector3(transform.position.x,nowY,transform.position.z);
+        }
+        if(can_y && playerTransform.position.y < 0){
+            //nowY = playerTransform.position.y;
+            transform.position = new Vector3(transform.position.x,0,transform.position.z);
+        }
+        if(can_y && playerTransform.position.y > 0 && playerTransform.position.y < nowY){
+            nowY = playerTransform.position.y;
+            transform.position = new Vector3(transform.position.x,nowY,transform.position.z);
         }
     }
 
