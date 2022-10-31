@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/STAGE_SELECTOR.unity
+    path: Assets/Scenes/game_manager/STAGE_SELECTOR.unity
     guid: 8eafc31835dba6e4783a8237972307ad
   - enabled: 1
     path: Assets/Scenes/STAGE_EASY/(^^).unity

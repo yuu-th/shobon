@@ -29,6 +29,8 @@ public class STAGE_SELECTOR_CONTROLLER : MonoBehaviour
         root = uIDocument.rootVisualElement;
         this.root = this.uIDocument.rootVisualElement;
         
+        //Label comment = this.root.Q<Label>("comment");
+        //comment.text = "「Esc」で自殺できるよ(^o^)";
         
         
 
@@ -36,7 +38,6 @@ public class STAGE_SELECTOR_CONTROLLER : MonoBehaviour
         this.button.clickable.clicked += () => {
             Destroy(gameObject);
             this.back_stage.SetActive(true);
-            Debug.Log("Button clicked");
         };
         int i =0 ;
         root.Query<VisualElement>("level_wrapper").ForEach((VisualElement ele) => {
@@ -68,20 +69,4 @@ public class STAGE_SELECTOR_CONTROLLER : MonoBehaviour
         });
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
-    void return_to_title()
-    {
-        Debug.Log("return to title");
-    }
-
-    void select_stage(string stage_name)
-    {
-        Debug.Log(stage_name);
-    }
 }
