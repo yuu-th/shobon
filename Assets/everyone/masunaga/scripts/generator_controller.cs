@@ -16,7 +16,6 @@ public class generator_controller : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(end_time - first_time);
         if(end_time - first_time >= delay) 
         {
             Vector3 pos = new Vector3(this.transform.position.x,this.transform.position.y,0);
