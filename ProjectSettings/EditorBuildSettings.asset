@@ -36,10 +36,10 @@ EditorBuildSettings:
     path: Assets/Scenes/STAGE_EASY/Enemy_army.unity
     guid: 5fc8b4dcb4235ff48a61a70889b43dfa
   - enabled: 1
-    path: Assets/Scenes/ganyu.unity
+    path: Assets/Scenes/STAGE_EASY/ganyu.unity
     guid: 0f6cdb082334890458c0908663e8419d
   - enabled: 1
-    path: Assets/Scenes/gimic.unity
+    path: Assets/Scenes/STAGE_EASY/gimic.unity
     guid: 1d127c491dcea3f46b7f92360272cef3
   - enabled: 1
     path: Assets/Scenes/STAGE_NORMAL/hayato_is_BAKA.unity
@@ -74,4 +74,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/seima_minigame.unity
     guid: 265f13754abc96147b5100c7bfc4b1a5
+  - enabled: 1
+    path: Assets/Scenes/seima_unko2.unity
+    guid: fa755dfbd0334154595b7633b1a3d85f
   m_configObjects: {}
