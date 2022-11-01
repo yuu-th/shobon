@@ -248,6 +248,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void OnTriggerStay2D(Collider2D collider)
+    {
+        if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block" || collider.gameObject.tag == "pipe" || collider.gameObject.tag == "spring")
+        {
+
+            if (isGoalFalling)
+            {
+                isGoalFalling = false;
+                isGoalWalking = true;
+            }
+        }
+
+        if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block" || collider.gameObject.tag == "pipe" || collider.gameObject.tag == "spring")
+        {
+            StartCoroutine("WaitFor1Frame");
+            CancelInvoke("make_jump_Jud_on");
+        }
+    }
 
     void OnTriggerExit2D(Collider2D collider)
     {
@@ -264,15 +282,6 @@ public class PlayerController : MonoBehaviour
     IEnumerator Wait(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-    }
-
-    void OnTriggerStay2D(Collider2D collider)
-    {
-        if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block" || collider.gameObject.tag == "pipe" || collider.gameObject.tag == "spring")
-        {
-            StartCoroutine("WaitFor1Frame");
-            CancelInvoke("make_jump_Jud_on");
-        }
     }
 
 
