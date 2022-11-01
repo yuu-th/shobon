@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class omake_controller : MonoBehaviour
 {
     Animator animator;
     AudioSource audio_source;
     GameObject player;
-    public GameObject gaster_normal;
+    public GameObject gaster_right,gaster_left,gaster_up,gaster_down;
     SpriteRenderer player_render;
-    public AudioClip battle_start,attak_sound;
+    public AudioClip battle_start,attak_sound,win;
     Rigidbody2D player_rigid;
     void Start()
     {
@@ -55,7 +56,74 @@ public class omake_controller : MonoBehaviour
         audio_source.PlayOneShot(attak_sound);
         animator.SetTrigger("down_to_right");
         yield return new WaitForSeconds(0.2f);
-        Instantiate(gaster_normal, new Vector3(17, -3.5f, 0), Quaternion.identity);
+        Instantiate(gaster_right, new Vector3(17, -4f, 0), Quaternion.identity);
+        Instantiate(gaster_left, new Vector3(-17, -4f, 0), Quaternion.identity);
+        yield return new WaitForSeconds(0.8f);
+        StartCoroutine(down_up_down(false));
+        yield return new WaitForSeconds(0.5f);
+        audio_source.PlayOneShot(attak_sound);
+        Instantiate(gaster_up, new Vector3(2.1f, 17, 0), Quaternion.Euler(0,0,90));
+        Instantiate(gaster_up, new Vector3(-2.1f, 17, 0), Quaternion.Euler(0, 0, 90));
+        animator.SetTrigger("right_to_down");
+        audio_source.PlayOneShot(attak_sound);
+        yield return new WaitForSeconds(1f);
+        for (int i = 0;i <= 3; i++)
+        {
+            if(i % 2 == 0)
+            {
+                audio_source.PlayOneShot(attak_sound);
+                Instantiate(gaster_right, new Vector3(17, -5.5f+(1f*i), 0), Quaternion.identity);
+                yield return new WaitForSeconds(1.2f);
+            }
+            else
+            {
+                audio_source.PlayOneShot(attak_sound);
+                Instantiate(gaster_left, new Vector3(-17, -5.5f+(1f*i), 0), Quaternion.identity);
+                yield return new WaitForSeconds(1.2f);
+            }
+        }
+        audio_source.PlayOneShot(attak_sound);
+        Instantiate(gaster_right, new Vector3(17, -4f, 0), Quaternion.identity);
+        Instantiate(gaster_right, new Vector3(17, 1f, 0), Quaternion.identity);
+        yield return new WaitForSeconds(1.2f);
+        for(int i = 0;i <= 3;i++)
+        {
+            Instantiate(gaster_right, new Vector3(17, -4+(i*0.2f), 0), Quaternion.identity);
+            yield return new WaitForSeconds(0.05f);
+        }
+        yield return new WaitForSeconds(1f);
+        Instantiate(gaster_up, new Vector3(0.5f, 17, 0), Quaternion.Euler(0, 0, 90));
+        yield return new WaitForSeconds(1.5f);
+        audio_source.PlayOneShot(attak_sound);
+        animator.SetTrigger("down_to_right");
+        player_rigid.AddForce(new Vector2(10000, 0));
+        yield return new WaitForSeconds(0.8f);
+        for (int i = 0;i <= 9; i++)
+        {
+            yield return new WaitForSeconds(0.3f);
+            Instantiate(gaster_up, new Vector3(2.5f-0.5f*i, 17, 0), Quaternion.Euler(0, 0, 90));
+        }
+        yield return new WaitForSeconds(1.4f);
+        animator.SetTrigger("right_to_up");
+        audio_source.PlayOneShot(attak_sound);
+        for (int i = 0; i <= 9; i++)
+        {
+            yield return new WaitForSeconds(0.2f);
+            Instantiate(gaster_up, new Vector3(-3f + 0.5f * i, 17, 0), Quaternion.Euler(0, 0, 90));
+        }
+        yield return new WaitForSeconds(0.5f);
+        Instantiate(gaster_left, new Vector3(-17, -4f, 0), Quaternion.identity);
+        yield return new WaitForSeconds(3f);
+        audio_source.PlayOneShot(win);
+        yield return new WaitForSeconds(3f);
+        for (int i = 0; i <= 3; i++)
+        {
+            Instantiate(gaster_left, new Vector3(-17, -4 + (i * 0.2f), 0), Quaternion.identity);
+            yield return new WaitForSeconds(0.05f);
+        }
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("seima_unko2");
+
     }
 
     public IEnumerator down_up_down(bool power)

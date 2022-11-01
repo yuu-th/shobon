@@ -2,70 +2,65 @@ VisualElement {
 
 }
 #stage_button{
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    width: 300px;
-    font-size:50px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 150px;
+    font-size:25px;
 }
 #EASY_button{
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    width: 300px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 150px;
     background-color: rgba(24, 125, 28, 0.69);
     white-space: normal;
-    opacity:0.7;
     color:white;
-    font-size:50px;
+    font-size:25px;
 }
 #NORMAL_button{
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    width: 300px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 150px;
     background-color: rgba(18, 107, 152, 0.69);
     white-space: normal;
-    opacity:0.7;
     color:white;
-    font-size:50px;
+    font-size:25px;
 }
 #HARD_button{
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    width: 300px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 150px;
     background-color: rgb(132, 98, 3);
     white-space: normal;
-    opacity:0.7;
     color:white;
-    font-size:50px;
+    font-size:25px;
 }
 #EXPERT_button{
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    width: 300px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 150px;
     background-color: rgb(96, 24, 33);
     white-space: normal;
-    opacity:0.7;
     color:white;
-    font-size:50px;
+    font-size:25px;
 }
 #MASTER_button{
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    width: 300px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 150px;
     background-color: rgb(91, 2, 101);
     white-space: normal;
-    opacity:0.7;
     color:white;
-    font-size:50px;
+    font-size:25px;
 }

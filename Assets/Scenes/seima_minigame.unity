@@ -257,6 +257,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7714104997583068427, guid: 7f199db8d33404644b4095c9b20350a3, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 7714104997583068428, guid: 7f199db8d33404644b4095c9b20350a3, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -586,9 +590,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c26e4667a3136c546bd1c0431996736c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gaster_normal: {fileID: 8971983018457225840, guid: fe24f243b4b57a545bd900607681808e, type: 3}
+  gaster_right: {fileID: 8971983018457225840, guid: fe24f243b4b57a545bd900607681808e, type: 3}
+  gaster_left: {fileID: 1561067886326657866, guid: f04aec8b9aa682e4b88c4f14fb210e20, type: 3}
+  gaster_up: {fileID: 6788283796992406224, guid: 6bc08acebacbc6b418499d6a3095f303, type: 3}
+  gaster_down: {fileID: 2328009251974651268, guid: 3968be9397c29984b92d0f866639883f, type: 3}
   battle_start: {fileID: 8300000, guid: b0042d578148aed4bbc0048800655f11, type: 3}
   attak_sound: {fileID: 8300000, guid: 165fdccc8debed142a8aef6fead3e613, type: 3}
+  win: {fileID: 8300000, guid: 671e88a6949b87a4ead6833e2d383085, type: 3}
 --- !u!61 &1461222291
 BoxCollider2D:
   m_ObjectHideFlags: 0
