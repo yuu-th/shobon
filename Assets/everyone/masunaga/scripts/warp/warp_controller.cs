@@ -18,29 +18,28 @@ public class warp_controller : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        try {
-            warp_target = collider.gameObject.transform.parent.gameObject;
-            if (warp_target.tag == "Untagged")
-            {
-                return;
-            }
-            Debug.Log(warp_pair.transform.position);
-            StartCoroutine(cancel_warp());
-            warp_target.transform.position = new Vector3(warp_pair.transform.position.x, warp_pair.transform.position.y, 0);
-        }
-        catch (System.NullReferenceException)
+        try
         {
-            
+            try
+            {
+                warp_target = collider.gameObject.transform.parent.gameObject;
+                if (warp_target.tag == "Untagged")
+                {
+                    return;
+                }
+                StartCoroutine(cancel_warp());
+                warp_target.transform.position = new Vector3(warp_pair.transform.position.x, warp_pair.transform.position.y, 0);
+            }
+            catch (System.NullReferenceException)
+            {
+
+            }
+        }
+        catch (UnassignedReferenceException)
+        {
+
         }
     }
-
-    /*private void OnCollisionEnter2D(Collision2D collision)
-    {
-        warp_target = collision.gameObject.transform.parent.gameObject;
-        Debug.Log(collision.gameObject.transform.parent.gameObject.name);
-        StartCoroutine(cancel_warp());
-        warp_target.transform.position = new Vector3(warp_pair.transform.position.x, warp_pair.transform.position.y, 0);
-    }*/
 
     IEnumerator cancel_warp()
     {
