@@ -30,7 +30,7 @@ EditorBuildSettings:
     path: Assets/Scenes/STAGE_HARD/come oooon!.unity
     guid: ba21fca01019f9946adb2e2ba3fe7ce6
   - enabled: 1
-    path: Assets/Scenes/STAGE_NORMAL/empty.unity
+    path: Assets/Scenes/STAGE_NORMAL/trash.unity
     guid: 51b7dd874c40abc439fa0ea22b036591
   - enabled: 1
     path: Assets/Scenes/STAGE_EASY/Enemy_army.unity
@@ -54,7 +54,7 @@ EditorBuildSettings:
     path: Assets/Scenes/STAGE_EASY/kubo.unity
     guid: 408c8e61d51255449821bd5ec4063e15
   - enabled: 1
-    path: Assets/Scenes/STAGE_NORMAL/luck.for_beginners.unity
+    path: Assets/Scenes/STAGE_NORMAL/last_luck.unity
     guid: ba6814210618ec24f8683b0434385486
   - enabled: 1
     path: Assets/Scenes/STAGE_EXPERT/Megane.unity
