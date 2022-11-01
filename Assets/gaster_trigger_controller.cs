@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class gaster_trigger_controller : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject gaster;
+    public Vector2 pos;
+    public bool up;
     void Start()
     {
         
@@ -14,5 +16,22 @@ public class gaster_trigger_controller : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            if (up)
+            {
+                Instantiate(gaster, pos, Quaternion.Euler(0,0,90));
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instantiate(gaster, pos, Quaternion.identity);
+                Destroy(gameObject);
+            }
+        }
     }
 }
