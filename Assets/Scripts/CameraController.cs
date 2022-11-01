@@ -18,8 +18,8 @@ public class CameraController: MonoBehaviour
         playerObj = GameObject.FindGameObjectWithTag("Player");
         player = playerObj.GetComponent<PlayerController>();
         playerTransform = playerObj.transform;
-        nowX = 0;
-        nowY = 0;
+        nowX = this.gameObject.transform.position.x;
+        nowY = this.gameObject.transform.position.y;
     }
 
     void FixedUpdate()
