@@ -20,7 +20,7 @@ public class ui_controller : MonoBehaviour
     void Update()
     {
         Text score_text = text_object.GetComponent<Text>();
-        score_text.text = "�~     " + life;
+        score_text.text = " ☓   " + life;
         Invoke("retry", 3);
     }
 
