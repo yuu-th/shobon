@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Scenes/STAGE_EASY/60over.unity
     guid: c72245e146aca25458c7a1e909505b40
   - enabled: 1
-    path: Assets/Scenes/STAGE_HARD/come oooon!.unity
+    path: Assets/Scenes/STAGE_HARD/Daipan_Festival.unity
     guid: ba21fca01019f9946adb2e2ba3fe7ce6
   - enabled: 1
     path: Assets/Scenes/STAGE_NORMAL/trash.unity
