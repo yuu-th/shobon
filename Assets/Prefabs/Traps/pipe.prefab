@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1126624311
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.22745098, g: 0.8784314, b: 0.26666668, a: 1}
@@ -243,7 +243,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1126624311
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.22678883, g: 0.8773585, b: 0.26544824, a: 1}
@@ -294,6 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 486f5d353e478ea4da25f6ae8e625ee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dokan_sound: {fileID: 8300000, guid: 2bfd4adeee36f4b40837d5e888bb71c4, type: 3}
   can_warp: 0
   pair_pipe: {fileID: 0}
 --- !u!1 &7334324795312746910

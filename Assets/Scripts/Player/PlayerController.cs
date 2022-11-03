@@ -8,6 +8,8 @@ using UnityEngine.Rendering.PostProcessing;
 public class PlayerController : MonoBehaviour
 {
 
+    private bool stage_finished =false;
+
 
     private PostProcessVolume postProcessVolume;
 
@@ -20,8 +22,13 @@ public class PlayerController : MonoBehaviour
 
     public AudioClip death_sound;
     public AudioClip jump_sound;
+    public AudioClip mazai_sound;
+    public AudioClip humi_sound;
+    public AudioClip goal_sound;
 
     private AudioSource audioSource;
+
+    private Renderer objectRenderer;
 
 
     public static string stage_name;
@@ -62,11 +69,16 @@ public class PlayerController : MonoBehaviour
         stage_name = SceneManager.GetActiveScene().name;
         cameara_object = GameObject.Find("Main Camera");
         camera_render = cameara_object.GetComponent<Camera>();
+
+        this.objectRenderer = gameObject.GetComponent<Renderer>();
     }
 
 
     void Update()
     {
+        if (stage_finished){
+            return;
+        }
         if (Input.GetKey(KeyCode.Escape)){
             SceneManager.LoadScene("STAGE_SELECTOR");
          }
@@ -81,6 +93,7 @@ public class PlayerController : MonoBehaviour
         if (get_mazai == true)
         {
             Debug.Log("mazai");
+            audioSource.PlayOneShot(this.mazai_sound);
             get_time = Time.time;
             mazai_counter += 1;
             get_mazai = false;
@@ -123,6 +136,10 @@ public class PlayerController : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if (stage_finished)
+        {
+            return;
+        }
         jumpAfterFrame++;
 
         if (isGoalFalling)
@@ -207,6 +224,7 @@ public class PlayerController : MonoBehaviour
                 {
                     return;
                 }
+                audioSource.PlayOneShot(this.humi_sound);
                 rigid2D.velocity = new Vector2(rigid2D.velocity.x, 0);
                 if (rigid2D.velocity.x > 1.0f)
                 {
@@ -239,12 +257,15 @@ public class PlayerController : MonoBehaviour
         if (collider.gameObject.tag == "Goal" && !isGoalFalling && !isGoalWalking)
         {
             isGoalFalling = true;
+            audioSource.Stop();
+            audioSource.PlayOneShot(this.goal_sound);
         }
         if (isGoalWalking && collider.gameObject.tag == "GoalToride")
         {
-            gameObject.SetActive(false);
-            StartCoroutine(Wait(5.0f));
-            SceneManager.LoadScene("STAGE_SELECTOR");
+            isGoalWalking = false;
+            rigid2D.velocity= new Vector2(0,0);
+            stage_finished = true;
+            StartCoroutine(stage_clear());
         }
     }
 
@@ -301,6 +322,14 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(die());
             Debug.Log("uho");
         }
+    }
+
+    public IEnumerator stage_clear()
+    {
+        this.objectRenderer.enabled = false;
+        //gameObject.SetActive(true);
+        yield return new WaitForSeconds(7.0f);
+        SceneManager.LoadScene("STAGE_SELECTOR");
     }
 
     public IEnumerator die()
