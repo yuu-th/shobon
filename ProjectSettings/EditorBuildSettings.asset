@@ -77,4 +77,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/seima_unko2.unity
     guid: fa755dfbd0334154595b7633b1a3d85f
+  - enabled: 1
+    path: Assets/Scenes/STAGE_MASTER/seima_unko.unity
+    guid: cc83ac8007429c2449ace387e62c2d2e
   m_configObjects: {}
