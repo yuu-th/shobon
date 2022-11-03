@@ -3814,7 +3814,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8011063243444298404, guid: 933a772f636efd748a290c1eadeb23b0, type: 3}
       propertyPath: can_kill
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8011063243444298411, guid: 933a772f636efd748a290c1eadeb23b0, type: 3}
       propertyPath: m_RootOrder
