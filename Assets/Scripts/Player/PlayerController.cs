@@ -196,8 +196,8 @@ public class PlayerController : MonoBehaviour
             }
 
             //�W�����v�����̉���
-            this.jump_Jud = false;
-            rigid2D.velocity = new Vector2(rigid2D.velocity.x, 0);
+            //this.jump_Jud = false;
+            //rigid2D.velocity = new Vector2(rigid2D.velocity.x, 0);
         }
         if (collider.gameObject.tag == "KillAbleEnemy")
         {
@@ -258,6 +258,8 @@ public class PlayerController : MonoBehaviour
                 isGoalFalling = false;
                 isGoalWalking = true;
             }
+
+            this.jump_Jud = false;
         }
 
         if (collider.gameObject.name == "Tilemap" || collider.gameObject.tag == "Block" || collider.gameObject.tag == "pipe" || collider.gameObject.tag == "spring")
