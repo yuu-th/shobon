@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class pipe_entrance_controller : MonoBehaviour
 {
+    private AudioSource audioSource;
+
+    public AudioClip dokan_sound;
+
+
     float horizontal, vertical;
     public bool can_warp = false;
     public GameObject pair_pipe;
@@ -12,6 +17,7 @@ public class pipe_entrance_controller : MonoBehaviour
     Rigidbody2D player_rigid;
     void Start()
     {
+        
         try
         {
             player = GameObject.FindGameObjectWithTag("Player");
@@ -25,6 +31,8 @@ public class pipe_entrance_controller : MonoBehaviour
             pair_pipe_entrance_trigger_ = pair_pipe_entrance.transform.GetChild(0).gameObject;
             pair_pipe_trigger_collider = pair_pipe_entrance_trigger_.GetComponent<BoxCollider2D>();
             parernt_pipe = this.transform.parent.gameObject;
+
+            audioSource=player.GetComponent<AudioSource>();
         }
         catch (UnassignedReferenceException)
         {
@@ -40,6 +48,7 @@ public class pipe_entrance_controller : MonoBehaviour
 
     IEnumerator into_pipe()
     {
+        audioSource.PlayOneShot(dokan_sound);
         switch (parernt_pipe.transform.localEulerAngles.z)
         {
             case 0:
@@ -125,6 +134,8 @@ public class pipe_entrance_controller : MonoBehaviour
                 }
                 break;
         }
+        
+        audioSource.PlayOneShot(dokan_sound);
         
         player_foot_collider.enabled = true;
         player_head_collider.enabled = true;
