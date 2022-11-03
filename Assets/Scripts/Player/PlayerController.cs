@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     public AudioClip death_sound;
     public AudioClip jump_sound;
+    public AudioClip mazai_sound;
 
     private AudioSource audioSource;
 
@@ -81,6 +82,7 @@ public class PlayerController : MonoBehaviour
         if (get_mazai == true)
         {
             Debug.Log("mazai");
+            audioSource.PlayOneShot(this.mazai_sound);
             get_time = Time.time;
             mazai_counter += 1;
             get_mazai = false;
