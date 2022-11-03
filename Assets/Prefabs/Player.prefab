@@ -265,6 +265,8 @@ MonoBehaviour:
   death_sound: {fileID: 8300000, guid: 3e9cb514b23f7924999b0d75c61d6a82, type: 3}
   jump_sound: {fileID: 8300000, guid: a08352bbf39973f4fbaf493697116284, type: 3}
   mazai_sound: {fileID: 8300000, guid: 5431abf203ecc894f84b9904f68b0493, type: 3}
+  humi_sound: {fileID: 8300000, guid: 744cdb8e56e2e4443801b9e01a031a4e, type: 3}
+  goal_sound: {fileID: 8300000, guid: 561aae3c7541e6141acb65e55414ebe1, type: 3}
   mazai1: 0
   mazai2: 0
   mazai_speed: 0
