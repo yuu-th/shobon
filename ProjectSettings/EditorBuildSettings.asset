@@ -51,7 +51,7 @@ EditorBuildSettings:
     path: Assets/Scenes/koumeinowana.unity
     guid: 9848081920f53aa41b75cc8419ee5dc8
   - enabled: 1
-    path: Assets/Scenes/STAGE_EASY/kubo.unity
+    path: Assets/Scenes/STAGE_EASY/let's.unity
     guid: 408c8e61d51255449821bd5ec4063e15
   - enabled: 1
     path: Assets/Scenes/STAGE_NORMAL/last_luck.unity
