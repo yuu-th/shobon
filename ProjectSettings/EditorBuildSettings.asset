@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/seima_stage.unity
     guid: dcc6c06aa40df3140889ba04d3576005
   - enabled: 1
-    path: Assets/Scenes/STAGE_MASTER/nonor.unity
+    path: Assets/Scenes/STAGE_MASTER/mazohisuto_muke.unity
     guid: 10df0ddbf0397424d9cc4972003ce85e
   - enabled: 1
     path: Assets/Scenes/STAGE_HARD/monster_road.unity
