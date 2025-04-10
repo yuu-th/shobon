@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1126624311
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 481411013, guid: 62936a9aaeca3e64d878f0bac8b63c99, type: 3}
@@ -100,6 +100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc26a3da1e1b81c43a6dd09cbb44348e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  broken_sound: {fileID: 8300000, guid: 4b16afa65c44891429ecf1eecfcdb7af, type: 3}
+  start_pos: {x: 0, y: 0}
+  end_pos: {x: 0, y: 0}
+  can_kill: 0
+  Downward: 0
+  speed: 0
 --- !u!61 &862062749854639476
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -150,7 +156,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 0.1}
+  m_Size: {x: 0.8, y: 0.1}
   m_EdgeRadius: 0
 --- !u!50 &862062749854639477
 Rigidbody2D:

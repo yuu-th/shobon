@@ -4,9 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Stage
-  - Background
   - Block
+  - Goal
+  - GoalToride
+  - spring
+  - KillAbleEnemy
+  - Trap
+  - pipe
+  - shader
+  - Background
+  - Stage
   layers:
   - Default
   - TransparentFX
@@ -41,24 +48,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 546850749
-    locked: 0
-  - name: decration
-    uniqueID: 2921074371
-    locked: 0
-  - name: Tilemap
-    uniqueID: 2437957817
+  - name: Decorations
+    uniqueID: 746326655
     locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Enemies
-    uniqueID: 3129618235
-    locked: 0
-  - name: Player
-    uniqueID: 2106520841
-    locked: 0
-  - name: Blocks
-    uniqueID: 1126624311
     locked: 0
